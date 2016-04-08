@@ -29,22 +29,6 @@ public class Utils {
         return false;
     }
 
-    // TODO: 16/4/7 修改关于时间的函数
-
-    public static int fromNow(String date){
-        Date from = getDate(date);
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(from);
-        long time1 = cal.getTimeInMillis();
-        Date now = new Date();
-        cal.setTime(now);
-        cal.add(Calendar.HOUR,4);
-        long time2 = cal.getTimeInMillis()+20*60*1000;
-        long between_days=(time2-time1)/(1000*60);
-
-        return Integer.parseInt(String.valueOf(between_days));
-    }
-
     public static Date getDate(String date) {
         try {
             return format.parse(date);
@@ -53,9 +37,20 @@ public class Utils {
         }
     }
 
+    // TODO: 16/4/8 修复关于时区的问题
     public static String getHowTime(String time){
-        int minute = Utils.fromNow(time);
-        int hours = minute/60;
+        Date from = getDate(time);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(from);
+        long time1 = cal.getTimeInMillis();
+        Date now = new Date();
+        cal.setTime(now);
+        cal.add(Calendar.HOUR,4);
+        cal.add(Calendar.SECOND,30);
+        long time2 = cal.getTimeInMillis();
+        long betweenMinutes=(time2-time1)/(1000*60);
+
+        int hours = (int)(betweenMinutes/60);
         int days = hours/24;
         int months = days/30;
         int years = months/12;
@@ -72,7 +67,7 @@ public class Utils {
             return (hours + " hours ago");
         }
         else{
-            return (minute + " minutes ago");
+            return ((int)betweenMinutes + " minutes ago");
         }
     }
 

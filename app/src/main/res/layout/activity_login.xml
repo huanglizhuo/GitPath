@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="xyz.lizhuo.gitpath.View.LoginActivity"
+    >
+  <LinearLayout
+      android:id="@+id/input_place"
+      android:orientation="vertical"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <ImageView
+          android:src="@drawable/ic_action_use_blue"
+          android:layout_width="25dp"
+          android:layout_height="25dp" />
+      <EditText
+          android:id="@+id/username_et"
+          android:padding="10sp"
+          android:layout_width="270dp"
+          android:layout_height="50dp"
+          android:hint="Username"
+          android:background="@null"
+          android:singleLine="true"
+          />
+    </LinearLayout>
+
+    <View
+        android:layout_gravity="center"
+        android:background="#CBDADD"
+        android:layout_marginLeft="15dp"
+        android:layout_width="260dp"
+        android:layout_height="1sp">
+    </View>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <ImageView
+          android:src="@drawable/ic_action_key_blue"
+          android:layout_width="20dp"
+          android:layout_height="20dp" />
+      <EditText
+          android:id="@+id/password_et"
+          android:padding="10sp"
+          android:background="@null"
+          android:layout_width="270dp"
+          android:layout_height="50dp"
+          android:singleLine="true"
+          android:password="true"
+          android:hint="Password"
+          android:layout_centerVertical="true" />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <Button
+      android:id="@+id/login_btn"
+      android:background="@drawable/btn_selector"
+      android:text="登录"
+      android:layout_below="@+id/input_place"
+      android:layout_centerHorizontal="true"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+
+</RelativeLayout>

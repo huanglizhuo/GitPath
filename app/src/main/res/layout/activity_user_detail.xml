@@ -1,0 +1,152 @@
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <EditText
+        android:id="@+id/user_name"
+        android:enabled="false"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        style="@style/EditTextInfo"
+        tools:text="huanglizhuo" />
+
+    <LinearLayout
+        android:id="@+id/foww"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_name"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_followers"
+                tools:text="389"
+                style="@style/CountText"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="followers"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#dddddd" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_following"
+                tools:text="389"
+                style="@style/CountText"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="following"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/foww"
+        android:orientation="vertical">
+        <View
+            android:layout_marginTop="10dp"
+            android:background="#75757575"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <EditText
+            android:id="@+id/e_mail"
+            android:drawableLeft="@drawable/common_email"
+            style="@style/EditTextInfo"
+            android:hint="email" />
+
+        <EditText
+            android:id="@+id/company"
+            android:drawableLeft="@drawable/common_company"
+            style="@style/EditTextInfo"
+            android:hint="company" />
+
+        <EditText
+            android:id="@+id/location"
+            android:drawableLeft="@drawable/common_location"
+            style="@style/EditTextInfo"
+            android:hint="location" />
+
+        <EditText
+            android:id="@+id/join_time"
+            android:drawableLeft="@drawable/common_time"
+            style="@style/EditTextInfo"
+            android:hint="join time" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/repo_gist_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/user_repos_count"
+                style="@style/CountText"
+                tools:text="378" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="repos" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#dddddd" />
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_started_count"
+                style="@style/CountText"
+                tools:text="378" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Started" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

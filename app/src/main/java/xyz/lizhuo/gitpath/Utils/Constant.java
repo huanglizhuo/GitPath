@@ -19,4 +19,6 @@ public class Constant {
     public final static String TOKEN_NOTE = "GitPath APP A Great GitHub Client";
     public final static String[] SCOPES = {"public_repo", "repo", "user", "gist"};
 
+    public final static String GITHUBCSSFILE= "file:///android_asset/markdown_css_themes/classic.css";
+
 }

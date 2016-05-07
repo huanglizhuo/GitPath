@@ -1,17 +1,16 @@
 package xyz.lizhuo.gitpath.Utils;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Base64;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
-import xyz.lizhuo.gitpath.Application.GitPathApplication;
+import xyz.lizhuo.gitpath.GitPathApplication;
 
 /**
  * Created by lizhuo on 16/3/26.
@@ -43,10 +42,8 @@ public class Utils {
         Calendar cal = Calendar.getInstance();
         cal.setTime(from);
         long time1 = cal.getTimeInMillis();
-        Date now = new Date();
-        cal.setTime(now);
-        cal.add(Calendar.HOUR,4);
-        cal.add(Calendar.SECOND,30);
+        Date to = new Date();
+        cal.setTime(to);
         long time2 = cal.getTimeInMillis();
         long betweenMinutes=(time2-time1)/(1000*60);
 
@@ -71,7 +68,23 @@ public class Utils {
         }
     }
 
+    public static final byte[] fromBase64(String content) {
+        return Base64.decode(content, Base64.DEFAULT);
+    }
 
+    public static final String toBase64(final byte[] content) {
+        return Base64.encodeToString(content, Base64.DEFAULT);
+    }
+
+
+    public static String loadMarkdownToHtml(final String txt, final String cssFile) {
+        String html;
+        if (null != cssFile) {
+            html = "<link rel='stylesheet' type='text/css' href='" + cssFile + "' />" + txt;
+            return html;
+        }
+        return null;
+    }
 
 
 }

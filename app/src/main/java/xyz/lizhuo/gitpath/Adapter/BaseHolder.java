@@ -9,7 +9,7 @@ import android.view.View;
 public class BaseHolder extends RecyclerView.ViewHolder{
     private BaseViewHolder baseViewHolder;
 
-    public BaseHolder(View itemView) {
+    public BaseHolder(View itemView,int viewType) {
         super(itemView);
         baseViewHolder = BaseViewHolder.getViewHolder(itemView);
     }

@@ -7,27 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import java.util.List;
-
-import xyz.lizhuo.gitpath.GithubModel.Event;
-
 /**
  * Created by lizhuo on 16/4/5.
  */
 public abstract class BaseAdapter extends RecyclerView.Adapter<BaseHolder> {
-    public List<Event> list;
+
+    // TODO: 16/4/11 add Header and Footer
+    private static final int IS_NORMAL = 1;
+    private static final int IS_HEADER = 2;
+    private static final int IS_FOOTER = 3;
+
     public Context context;
     private AdapterView.OnItemClickListener onItemClickListener;
 
-    public BaseAdapter(Context context, List<Event> list){
-        this.list = list;
+    public BaseAdapter(Context context) {
         this.context = context;
+//        this.context = GitPathApplication.getContext();
     }
 
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(onCreateViewLayout(viewType),null);
-        return new BaseHolder(view);
+        View view = LayoutInflater.from(context).inflate(onCreateViewLayout(viewType), null);
+        return new BaseHolder(view, viewType);
     }
 
     public abstract int onCreateViewLayout(int viewType);
@@ -37,14 +38,15 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<BaseHolder> {
         super.onViewRecycled(holder);
     }
 
+
     @Override
     public void onBindViewHolder(final BaseHolder holder, final int position) {
-        onBindViewHolder(holder.getBaseViewHolder(),position);
-        if (onItemClickListener!=null){
+        onBindViewHolder(holder.getBaseViewHolder(), position);
+        if (onItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemClickListener.onItemClick(null,v,holder.getPosition(),holder.getItemId());
+                    onItemClickListener.onItemClick(null, v, holder.getPosition(), holder.getItemId());
                 }
             });
         }
@@ -52,16 +54,13 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<BaseHolder> {
 
     public abstract void onBindViewHolder(BaseViewHolder baseViewHolder, int position);
 
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
 
-    public AdapterView.OnItemClickListener getOnItemClickListener(){
+    public AdapterView.OnItemClickListener getOnItemClickListener() {
         return onItemClickListener;
     }
 
-    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener){
+    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
+
 }

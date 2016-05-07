@@ -10,9 +10,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="xyz.lizhuo.gitpath.View.LoginActivity"
     >
+
+  <ImageView
+      android:id="@+id/octocat"
+      android:src="@drawable/octorcat"
+      android:layout_marginTop="60dp"
+      android:layout_centerHorizontal="true"
+      android:layout_width="200dp"
+      android:layout_height="200dp"/>
   <LinearLayout
       android:id="@+id/input_place"
       android:orientation="vertical"
+      android:layout_below="@id/octocat"
       android:layout_centerHorizontal="true"
       android:layout_centerVertical="true"
       android:layout_width="match_parent"
@@ -24,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
       <ImageView
-          android:src="@drawable/ic_action_use_blue"
+          android:src="@drawable/user"
           android:layout_width="25dp"
           android:layout_height="25dp" />
       <EditText
@@ -52,9 +61,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
       <ImageView
-          android:src="@drawable/ic_action_key_blue"
-          android:layout_width="20dp"
-          android:layout_height="20dp" />
+          android:src="@drawable/key"
+          android:layout_width="25dp"
+          android:layout_height="25dp" />
       <EditText
           android:id="@+id/password_et"
           android:padding="10sp"
@@ -73,11 +82,13 @@
   <Button
       android:id="@+id/login_btn"
       android:background="@drawable/btn_selector"
-      android:text="登录"
+      android:text="Go"
+      android:textColor="@color/white"
       android:layout_below="@+id/input_place"
+      android:layout_marginTop="10dp"
       android:layout_centerHorizontal="true"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="35dp"
       />
 
 </RelativeLayout>

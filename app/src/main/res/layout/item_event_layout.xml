@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardElevation="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="4dp"
+    android:orientation="vertical"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="2dp"
+    app:cardPreventCornerOverlap="true">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16sp">
         <ImageView
             android:id="@+id/avatar_spv"
-            android:src="@drawable/fork"
+            tools:src="@drawable/star"
             android:layout_centerVertical="true"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -27,13 +31,20 @@
                 android:id="@+id/actor_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                tools:text="huanglizhuo fork" />
+                android:textSize="15sp"
+                tools:text="fork by huanglizhuo " />
             <TextView
                 android:id="@+id/repo_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:textSize="20sp"
+                tools:text="Kotlin-in-chinese" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/repo_desciption_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
                 tools:text="Kotlin-in-chinese" />
 
             <LinearLayout
@@ -42,7 +53,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/action_img"
-                    android:src="@drawable/star"
+                    android:layout_gravity="center"
                     android:layout_width="13dp"
                     android:layout_height="13dp" />
                 <TextView

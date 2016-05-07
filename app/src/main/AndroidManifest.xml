@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="xyz.lizhuo.gitpath">
+          package="xyz.lizhuo.gitpath">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
-        android:name=".Application.GitPathApplication"
+        android:name=".GitPathApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainActivity" />
+        <meta-data
+            android:name="xyz.lizhuo.gitpath.Utils.MyGlideMode"
+            android:value="GlideModule"/>
+
+        <activity android:name=".View.MainActivity"/>
         <activity android:name=".View.LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".View.EventActivity"></activity>
+        <activity android:name=".View.RepoDetailActivity"/>
+        <activity android:name=".View.UserDetailActivity"/>
+        <activity android:name=".View.BlankActivity">
+        </activity>
     </application>
 
 </manifest>

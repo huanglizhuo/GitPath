@@ -1,39 +1,148 @@
 package xyz.lizhuo.gitpath.View;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
+import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import java.util.ArrayList;
+import java.util.List;
+
+import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
+import xyz.lizhuo.gitpath.Frgments.BaseFragment;
+import xyz.lizhuo.gitpath.Frgments.EventFragment;
+import xyz.lizhuo.gitpath.Frgments.RepoFragment;
+import xyz.lizhuo.gitpath.Frgments.TrendingFragment;
+import xyz.lizhuo.gitpath.Frgments.UsersFragment;
+import xyz.lizhuo.gitpath.GithubModel.GitHub;
+import xyz.lizhuo.gitpath.GithubModel.Repo;
+import xyz.lizhuo.gitpath.GithubModel.User;
 import xyz.lizhuo.gitpath.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.viewpager)
-    ViewPager viewpager;
-    @Bind(R.id.tabs)
-    TabLayout tabs;
+    BottomNavigation mBottomNavigation;
+    FrameLayout mFragmentContainer;
+
+    private List<String> fragmentTags;
+    private FragmentManager mFragmentManager;
+    private boolean isBackClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        getSupportActionBar().hide();
-        setupViewPager(viewpager);
-        tabs.setupWithViewPager(viewpager);
+        mBottomNavigation = (BottomNavigation) findViewById(R.id.bottomNavigation);
+        mFragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
+        mFragmentManager = getSupportFragmentManager();
+        fragmentTags = new ArrayList<>();
+        initFraments();
+        setupBottomNavigation();
     }
 
-    public void setupViewPager(ViewPager upViewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new EventFragment(), "Event");
-        adapter.addFragment(new BlankFragment(),"Started");
-//        adapter.addFragment(new BlankFragment(),"HotRepo");
-//        adapter.addFragment(new BlankFragment(),"HotUser");
-        upViewPager.setAdapter(adapter);
+    private void initFraments() {
+        String name = GitHub.getInstance().getName();
+        addFrament(EventFragment.newInstance(name), "event", true);
+        addFrament(TrendingFragment.newInstance("java", "daily"), "trending", false);
+        addFrament(RepoFragment.newInstance(name, Repo.STARTEDREPO), "started", false);
+        addFrament(UsersFragment.newInstance(name, User.FOLLOWING), "following", false);
     }
 
+    private void setupBottomNavigation() {
+        mBottomNavigation.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
+            @Override
+            public void onMenuItemSelect(@IdRes int i, int i1) {
+                showThisFrament(fragmentTags.get(i1));
+
+//                getWindow().setStatusBarColor();
+
+
+                //stupid old way hahaha
+//                switch (i) {
+//                    case R.id.event_menu:
+//                        break;
+//                    case R.id.treding_menu:
+//                        showThisFrament("trending");
+//                        break;
+//                    case R.id.started_menu:
+//                        showThisFrament("started");
+//                        break;
+//                    case R.id.following_menu:
+//                        showThisFrament("following");
+//                        break;
+//                }
+            }
+
+            @Override
+            public void onMenuItemReselect(@IdRes int i, int i1) {
+//                switch (i) {
+//                    case R.id.event_menu:
+//                        break;
+//                    case R.id.treding_menu:
+//                        showThisFrament("trending");
+//                        break;
+//                    case R.id.started_menu:
+//                        showThisFrament("started");
+//                        break;
+//                    case R.id.following_menu:
+//                        showThisFrament("following");
+//                        break;
+//                }
+                BaseFragment baseFragment = (BaseFragment) mFragmentManager.findFragmentByTag(fragmentTags.get(i1));
+                baseFragment.upToTop();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isBackClicked) {
+            finish();
+        } else {
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            isBackClicked = true;
+        }
+    }
+
+    private void addFrament(Fragment fragment, String tag, boolean showNow) {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        transaction.add(R.id.fragment_container, fragment, tag);
+        fragmentTags.add(tag);
+        if (showNow) {
+            transaction.show(fragment);
+        } else {
+            transaction.hide(fragment);
+        }
+        transaction.addToBackStack(tag);
+        transaction.commit();
+    }
+
+    private void showThisFrament(String tag) {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        for (String i : fragmentTags) {
+            Fragment f = mFragmentManager.findFragmentByTag(i);
+            //avoid Android Fragment null object mNextAnim Internal Crach
+            if (f == null) {
+                continue;
+            } else {
+                if (i == tag) {
+                    transaction.show(f);
+                } else {
+                    transaction.hide(f);
+                }
+            }
+        }
+        transaction.commit();
+    }
+
+    private void removeAllFragment() {
+        for (String i : fragmentTags) {
+            Fragment f = mFragmentManager.findFragmentByTag(i);
+            f = null;
+        }
+    }
 }

@@ -6,7 +6,8 @@ import com.google.gson.annotations.SerializedName;
  * Created by lizhuo on 16/4/3.
  */
 public class Repo {
-
+    public static final int STARTEDREPO = 2;
+    public static final int OWNREPO = 3;
     /**
      * id : 22809354
      * name : android-2048-strings

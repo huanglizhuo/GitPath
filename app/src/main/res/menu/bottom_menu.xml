@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      app:bbn_itemColorActive="#FFFFFFFF"
+      app:bbn_itemColorInactive="#7FFFFFFF"
+      app:bbn_badgeColor="#FFCC0000"
+      app:bbn_rippleColor="#33ffffff">
+
+    <item
+        android:id="@+id/event_menu"
+        android:color="@color/colorPrimaryDark"
+        android:icon="@drawable/event"
+        android:title="Event" />
+    <item
+        android:id="@+id/treding_menu"
+        android:color="#EF5350"
+        android:icon="@drawable/trending"
+        android:title="Trend" />
+    <item
+        android:id="@+id/started_menu"
+        android:color="@android:color/holo_orange_dark"
+        android:icon="@drawable/star_white"
+        android:title="Started" />
+    <item
+        android:id="@+id/following_menu"
+        android:color="@android:color/holo_green_dark"
+        android:icon="@drawable/user_white"
+        android:title="Me" />
+</menu>

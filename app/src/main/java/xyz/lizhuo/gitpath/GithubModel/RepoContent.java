@@ -1,21 +1,31 @@
 package xyz.lizhuo.gitpath.GithubModel;
 
 /**
- * Created by lizhuo on 16/4/3.
+ * Created by yeungeek on 2016/4/13.
  */
 public class RepoContent {
 
     /**
-     * name : .gitignore
-     * path : .gitignore
-     * sha : d6bfc95b184bba3d6ea5c3a3eb609c0434be5aec
-     * size : 57
-     * url : https://api.github.com/repos/huanglizhuo/ClothNote/contents/.gitignore?ref=master
-     * html_url : https://github.com/huanglizhuo/ClothNote/blob/master/.gitignore
-     * git_url : https://api.github.com/repos/huanglizhuo/ClothNote/git/blobs/d6bfc95b184bba3d6ea5c3a3eb609c0434be5aec
-     * download_url : https://raw.githubusercontent.com/huanglizhuo/ClothNote/master/.gitignore
+     * name : README.md
+     * path : README.md
+     * sha : 0f1d7388e6b05b39dbfacb724f01134a5fe5dfe6
+     * size : 320
+     * url : https://api.github.com/repos/huanglizhuo/ClothNote/contents/README.md?ref=master
+     * html_url : https://github.com/huanglizhuo/ClothNote/blob/master/README.md
+     * git_url : https://api.github.com/repos/huanglizhuo/ClothNote/git/blobs/0f1d7388e6b05b39dbfacb724f01134a5fe5dfe6
+     * download_url : https://raw.githubusercontent.com/huanglizhuo/ClothNote/master/README.md
      * type : file
-     * _links : {"self":"https://api.github.com/repos/huanglizhuo/ClothNote/contents/.gitignore?ref=master","git":"https://api.github.com/repos/huanglizhuo/ClothNote/git/blobs/d6bfc95b184bba3d6ea5c3a3eb609c0434be5aec","html":"https://github.com/huanglizhuo/ClothNote/blob/master/.gitignore"}
+     * content : IyMjVGhpcyBpcyBhIHNpbXBsZSBub3RlIGFwcAoKaGVyZSBpcyBzb21lIHBp
+     YwoKPGltZyBzcmM9InBpYy9tYWluLnBuZyIgYWx0PSJtYWluIiB3aWR0aD0i
+     MzAwcHgiIC8+CjxpbWcgc3JjPSJwaWMvZGVsLnBuZyIgYWx0PSJkZWwiIHdp
+     ZHRoPSIzMDBweCIgLz4KPGltZyBzcmM9InBpYy9lZGl0LnBuZyIgYWx0PSJl
+     ZGl0IiB3aWR0aD0iMzAwcHgiIC8+CjxpbWcgc3JjPSJwaWMvZmxvdGluZy5w
+     bmciIGFsdD0iZmxvdGluZyIgd2lkdGg9IjMwMHB4IiAvPgo8aW1nIHNyYz0i
+     cGljL3NldHRpbmcucG5nIiBhbHQ9InNldHRpbmciIHdpZHRoPSIzMDBweCIg
+     Lz4KCgo=
+
+     * encoding : base64
+     * _links : {"self":"https://api.github.com/repos/huanglizhuo/ClothNote/contents/README.md?ref=master","git":"https://api.github.com/repos/huanglizhuo/ClothNote/git/blobs/0f1d7388e6b05b39dbfacb724f01134a5fe5dfe6","html":"https://github.com/huanglizhuo/ClothNote/blob/master/README.md"}
      */
 
     private String name;
@@ -27,10 +37,12 @@ public class RepoContent {
     private String git_url;
     private String download_url;
     private String type;
+    private String content;
+    private String encoding;
     /**
-     * self : https://api.github.com/repos/huanglizhuo/ClothNote/contents/.gitignore?ref=master
-     * git : https://api.github.com/repos/huanglizhuo/ClothNote/git/blobs/d6bfc95b184bba3d6ea5c3a3eb609c0434be5aec
-     * html : https://github.com/huanglizhuo/ClothNote/blob/master/.gitignore
+     * self : https://api.github.com/repos/huanglizhuo/ClothNote/contents/README.md?ref=master
+     * git : https://api.github.com/repos/huanglizhuo/ClothNote/git/blobs/0f1d7388e6b05b39dbfacb724f01134a5fe5dfe6
+     * html : https://github.com/huanglizhuo/ClothNote/blob/master/README.md
      */
 
     private LinksBean _links;
@@ -105,6 +117,22 @@ public class RepoContent {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getEncoding() {
+        return encoding;
+    }
+
+    public void setEncoding(String encoding) {
+        this.encoding = encoding;
     }
 
     public LinksBean get_links() {

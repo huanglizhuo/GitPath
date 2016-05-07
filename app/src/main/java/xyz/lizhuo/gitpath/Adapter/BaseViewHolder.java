@@ -4,6 +4,7 @@ import android.support.v7.widget.CardView;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +40,9 @@ public class BaseViewHolder {
         return (T) childView;
     }
 
+    public EditText getEditText(int id){
+        return get(id);
+    }
 
     public View getConverView(){
         return view;
@@ -59,8 +63,6 @@ public class BaseViewHolder {
     public ImageView getImageView(int id){
         return get(id);
     }
-//    public SimpleDraweeView getSimpleDraweeView(int id){
-//        return get(id);
-//    }
+
 
 }

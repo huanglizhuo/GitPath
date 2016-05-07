@@ -4,7 +4,8 @@ package xyz.lizhuo.gitpath.GithubModel;
  * Created by lizhuo on 16/4/3.
  */
 public class User {
-
+    public static final int FOLLOWER = 0;
+    public static final int FOLLOWING = 1;
     /**
      * login : huanglizhuo
      * id : 3874324

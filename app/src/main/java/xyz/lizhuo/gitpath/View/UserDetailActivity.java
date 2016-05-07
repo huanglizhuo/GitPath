@@ -134,7 +134,6 @@ public class UserDetailActivity extends BaseActivity {
         mLocation.setText((user.getLocation() == null) ? "N/A" : user.getLocation().toString());
         mUserReposCount.setText(user.getPublic_repos() + "");
         mStartedCount.setText(user.getPublic_gists() + "");
-
     }
 
     @OnClick({R.id.user_followers, R.id.user_following, R.id.user_repos_count})

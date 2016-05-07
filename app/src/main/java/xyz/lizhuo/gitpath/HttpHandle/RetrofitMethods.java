@@ -15,6 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import xyz.lizhuo.gitpath.GithubModel.Event;
+import xyz.lizhuo.gitpath.GithubModel.Notification;
 import xyz.lizhuo.gitpath.GithubModel.Repo;
 import xyz.lizhuo.gitpath.GithubModel.RepoContent;
 import xyz.lizhuo.gitpath.GithubModel.User;
@@ -106,11 +107,6 @@ public class RetrofitMethods {
         toSubscribe(statucheck(follow), subscriber);
     }
 
-//    public void unfolloweraUser(Subscriber<Boolean> subscriber, String username) {
-//        Observable follow = services.unfollowaUser(username);
-//        toSubscribe(statucheck(follow), subscriber);
-//    }
-
     private Observable<Boolean> statucheck(Observable<Response<String>> observable) {
         return observable.flatMap(new Func1<Response<String>, Observable<Boolean>>() {
             @Override
@@ -147,6 +143,16 @@ public class RetrofitMethods {
     public void getStarted(Subscriber<List<Repo>> subscriber, String username, int page) {
         Observable startedRepo = services.starredRepos(username, page);
         toSubscribe(startedRepo, subscriber);
+    }
+
+    public void getNotifications(Subscriber<List<Notification>> subscriber) {
+        Observable noti = services.getNotifications();
+        toSubscribe(noti, subscriber);
+    }
+
+    public void markAsRead(Subscriber<List<Notification>> subscriber, String lastReadAt) {
+        Observable noti = services.markAsRead(lastReadAt);
+        toSubscribe(noti, subscriber);
     }
 
     //    public void getConttents(Subscriber<RepoContent> subscriber, String owner, String reponame, String contents) {

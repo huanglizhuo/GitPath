@@ -27,7 +27,6 @@ import xyz.lizhuo.gitpath.View.RepoDetailActivity;
  */
 public class EventFragment extends BaseFragment {
     private EventAdapter adapter;
-    private String TYPE = "username";
 
     public EventFragment() {
     }
@@ -42,7 +41,7 @@ public class EventFragment extends BaseFragment {
 
     @Override
     public void initViews() {
-        username = getArguments().getString(TYPE);
+        username = getArguments().getString("username");
         recyclerView.addOnScrollListener(new EndlessScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int currentPage) {

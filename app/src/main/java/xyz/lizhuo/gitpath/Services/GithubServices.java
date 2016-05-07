@@ -15,6 +15,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 import xyz.lizhuo.gitpath.GithubModel.Event;
+import xyz.lizhuo.gitpath.GithubModel.Notification;
 import xyz.lizhuo.gitpath.GithubModel.Repo;
 import xyz.lizhuo.gitpath.GithubModel.RepoContent;
 import xyz.lizhuo.gitpath.GithubModel.Token;
@@ -95,5 +96,9 @@ public interface GithubServices {
     @GET("/users/{username}/starred")
     Observable<List<Repo>> starredRepos(@Path("username") String username, @Query("page") int page);
 
+    @GET("/notifications")
+    Observable<List<Notification>> getNotifications();
 
+    @PUT("/notifications")
+    Observable<Response<String>> markAsRead(@Body String lastReadAt);
 }

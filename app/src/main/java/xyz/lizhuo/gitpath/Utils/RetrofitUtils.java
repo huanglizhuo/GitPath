@@ -1,6 +1,7 @@
 package xyz.lizhuo.gitpath.Utils;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
@@ -39,7 +40,6 @@ public class RetrofitUtils {
                 Request.Builder builder = chain.request().newBuilder();
                 builder.removeHeader("User-Agent");
                 builder.addHeader("User-Agent", "GitPath");
-//                builder.addHeader("Accept", "application/vnd.github.v3.raw");
                 builder.addHeader("Time-Zone","Asia/Shanghai");
                 builder.addHeader("Authorization", "token " + GitHub.getInstance().getSavedToken());
 
@@ -51,11 +51,14 @@ public class RetrofitUtils {
                 if (Utils.isNetworkConnected()){
                     request = request.newBuilder().header("Cache-Control", "public, max-age=" + 1).build();
                 }else {
+                    Toast.makeText(GitPathApplication.getContext(), "NetWork not available the content is cache", Toast.LENGTH_SHORT).show();
                     request = request.newBuilder().header("Cache-Control", "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7).build();
                 }
                 return chain.proceed(request);
             }
         };
+
+        // TODO: 16/5/8 add error handling like 401 unautherised ...
         httpClientBuilder.addInterceptor(interceptor);
         httpClientBuilder.connectTimeout(5, TimeUnit.SECONDS);
         httpClientBuilder.cache(cache);

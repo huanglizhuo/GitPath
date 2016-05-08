@@ -15,9 +15,10 @@ import xyz.lizhuo.gitpath.Utils.Utils;
 /**
  * Created by lizhuo on 16/4/6.
  */
-public class EventAdapter extends BaseAdapter{
+public class EventAdapter extends BaseAdapter {
 
     public List<Event> list;
+
     public EventAdapter(Context context, List<Event> list) {
         super(context);
         this.list = list;
@@ -38,43 +39,47 @@ public class EventAdapter extends BaseAdapter{
         Event event = list.get(position);
         String type = event.getType();
         ImageView action_img = baseViewHolder.getImageView(R.id.action_img);
-        if(type.equals("PullRequestEvent")){
-            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin()+" "+event.getPayload().getAction());
-            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(),R.drawable.repo_marge));
-        }else if (type.equals("ForkEvent")){
-            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin()+" forked ");
-            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(),R.drawable.repo_fork));
-        }else if (type.equals("MemberEvent")){
+        if (type.equals("PullRequestEvent")) {
+            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin() + " " + event.getPayload().getAction());
+            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(), R.drawable.repo_marge));
+        } else if (type.equals("ForkEvent")) {
+            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin() + " forked ");
+            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(), R.drawable.repo_fork));
+        } else if (type.equals("MemberEvent")) {
             list.remove(position); //I do not care about the memberEvent
             return;
-        }else if (type.equals("CreateEvent")){
-            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin()+" create " );
-            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(),R.drawable.repo_create));
+        } else if (type.equals("CreateEvent")) {
+            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin() + " create ");
+            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(), R.drawable.repo_create));
+        } else if (type.equals("IssuesEvent")) {
+            // TODO: 16/5/7 add issue comment ... event
+            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin() + " " + event.getPayload().getAction());
+            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(), R.drawable.comment));
         } else {
-            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin()+" "+event.getPayload().getAction());
-            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(),R.drawable.star_black));
+            baseViewHolder.getTextView(R.id.actor_tv).setText(event.getActor().getLogin() + " " + event.getPayload().getAction());
+            action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(), R.drawable.star_black));
         }
         baseViewHolder.getTextView(R.id.repo_name_tv).setText(event.getRepo().getName());
         baseViewHolder.getTextView(R.id.past_time_tv).setText(Utils.getHowTime(event.getCreated_at()));
 
         ImageView avatar = baseViewHolder.getImageView(R.id.avatar_spv);
-        GlideManager.getInstance().loadCircleImage(context,event.getActor().getAvatar_url(),avatar);
+        GlideManager.getInstance().loadCircleImage(context, event.getActor().getAvatar_url(), avatar);
 
     }
 
-    public void refresh(List<Event> events){
+    public void refresh(List<Event> events) {
         list = null;
         list = events;
         notifyDataSetChanged();
     }
 
-    public void update(List<Event> events){
+    public void update(List<Event> events) {
         list.addAll(events);
         notifyDataSetChanged();
-        if(events != null && events.size() > 0) {
-            int startPosition =list.size();
+        if (events != null && events.size() > 0) {
+            int startPosition = list.size();
             list.addAll(events);
-            notifyItemRangeInserted(startPosition,events.size());
+            notifyItemRangeInserted(startPosition, events.size());
         }
     }
 }

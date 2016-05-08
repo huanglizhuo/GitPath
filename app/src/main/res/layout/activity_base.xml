@@ -69,6 +69,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         app:elevation="6dp"
+        app:backgroundTint="@color/floatdisable"
         app:rippleColor="@color/colorPrimary"
         app:borderWidth="0dp"
         app:layout_behavior="xyz.lizhuo.gitpath.View.FloatingButtonBehavior"

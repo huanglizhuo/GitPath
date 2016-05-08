@@ -1,11 +1,21 @@
 package xyz.lizhuo.gitpath.View;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.Keyframe;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Base64;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -35,6 +45,10 @@ public class LoginActivity extends AppCompatActivity {
     EditText usernameEt;
     @Bind(R.id.password_et)
     EditText passwordEt;
+    @Bind(R.id.octocat)
+    ImageView mOctocat;
+    @Bind(R.id.input_place)
+    LinearLayout mInputPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,41 +61,102 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void jumpMainActivity() {
-        Intent intent = new Intent(LoginActivity.this,UserDetailActivity.class);
-        intent.putExtra("userlogin","huanglizhuo");
-        intent.putExtra("avatar_url","https://avatars.githubusercontent.com/u/3874324?v=3");
-        intent.putExtra("reponame","huanglizhuo/kotlin-in-chinese");
+//        Intent intent = new Intent(LoginActivity.this, UserDetailActivity.class);
+//        intent.putExtra("userlogin", "huanglizhuo");
+//        intent.putExtra("avatar_url", "https://avatars.githubusercontent.com/u/3874324?v=3");
+//        intent.putExtra("reponame", "huanglizhuo/kotlin-in-chinese");
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
     }
 
     @OnClick(R.id.login_btn)
     public void onClick() {
-        // TODO: 16/4/10 add loading animation 
+        // TODO: 16/4/10 add loading animation
+        loginBtn.setEnabled(false);
+
         String userName = usernameEt.getText().toString();
         String passWord = passwordEt.getText().toString();
         GitHub.getInstance().setName(userName);
-        if (userName != "" && passWord != "") {
-            // TODO: 16/4/8 添加登出操作 删除 token 方法
+        if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(passWord)) {
             getToken(userName + ":" + passWord, new Callback<Token>() {
                 @Override
                 public void onResponse(Call<Token> call, Response<Token> response) {
-                    String s = response.body().getToken();
-                    GitHub.getInstance().setToken(s);
-                    jumpMainActivity();
+                    if (response.code() == 201) {
+                        GitHub.getInstance()
+                                .setToken(response.body().getToken());
+                        sucessAnimation();
+                        return;
+                    } else if (response.code() == 401) {
+                        Toast.makeText(getBaseContext(), "Unauthorized Check your input", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getBaseContext(), response.message(), Toast.LENGTH_LONG).show();
+                    }
+                    fail();
                 }
 
                 @Override
                 public void onFailure(Call<Token> call, Throwable t) {
+                    fail();
+                    Toast.makeText(getBaseContext(), "Fail :( Check Your Network", Toast.LENGTH_LONG).show();
                 }
             });
-        }else {
-            Toast.makeText(this,"用户名密码不可为空",Toast.LENGTH_LONG).show();
+        } else {
+            fail();
+            Toast.makeText(this, "用户名密码不可为空", Toast.LENGTH_LONG).show();
         }
     }
 
+    private void sucessAnimation() {
+        final Animator fade = AnimatorInflater.loadAnimator(this, R.animator.fade_out);
+        fade.setTarget(mInputPlace);
+        fade.start();
 
-    public void getToken(String credentials, Callback<Token> callback) {
+        final Animator succes = AnimatorInflater.loadAnimator(this, R.animator.zoom_out_fade);
+        succes.setTarget(mOctocat);
+        succes.setInterpolator(new FastOutSlowInInterpolator());
+        succes.start();
+        succes.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                jumpMainActivity();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+    }
+
+    private void fail() {
+
+        loginBtn.setEnabled(true);
+        int delta = mOctocat.getResources().getDimensionPixelOffset(R.dimen.spacing_medium);
+        PropertyValuesHolder pvhTranslateX = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X,
+                Keyframe.ofFloat(0f, 0),
+                Keyframe.ofFloat(.10f, -delta),
+                Keyframe.ofFloat(.26f, delta),
+                Keyframe.ofFloat(.42f, -delta),
+                Keyframe.ofFloat(.58f, delta),
+                Keyframe.ofFloat(.74f, -delta),
+                Keyframe.ofFloat(.90f, delta),
+                Keyframe.ofFloat(1f, 0f)
+        );
+        ObjectAnimator.ofPropertyValuesHolder(mOctocat, pvhTranslateX)
+                .setDuration(1000).start();
+    }
+
+    private void getToken(String credentials, Callback<Token> callback) {
         GithubServices client = RetrofitUtils.getRetrofitWithoutToken().create(GithubServices.class);
         JSONObject json = new JSONObject();
         try {

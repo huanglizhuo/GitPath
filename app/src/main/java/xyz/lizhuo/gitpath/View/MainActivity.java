@@ -13,14 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
+import xyz.lizhuo.gitpath.Frgments.AboutMeFragment;
 import xyz.lizhuo.gitpath.Frgments.BaseFragment;
 import xyz.lizhuo.gitpath.Frgments.EventFragment;
 import xyz.lizhuo.gitpath.Frgments.RepoFragment;
 import xyz.lizhuo.gitpath.Frgments.TrendingFragment;
-import xyz.lizhuo.gitpath.Frgments.UsersFragment;
 import xyz.lizhuo.gitpath.GithubModel.GitHub;
 import xyz.lizhuo.gitpath.GithubModel.Repo;
-import xyz.lizhuo.gitpath.GithubModel.User;
 import xyz.lizhuo.gitpath.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,16 +39,24 @@ public class MainActivity extends AppCompatActivity {
         mFragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
         mFragmentManager = getSupportFragmentManager();
         fragmentTags = new ArrayList<>();
-        initFraments();
         setupBottomNavigation();
+        initFraments();
     }
+
+    // TODO: 16/5/8 try to fix restart the fragment overlaped
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        removeAllFragment();
+//        initFraments();
+//    }
 
     private void initFraments() {
         String name = GitHub.getInstance().getName();
         addFrament(EventFragment.newInstance(name), "event", true);
-        addFrament(TrendingFragment.newInstance("java", "daily"), "trending", false);
+        addFrament(TrendingFragment.newInstance("", "daily"), "trending", false);
         addFrament(RepoFragment.newInstance(name, Repo.STARTEDREPO), "started", false);
-        addFrament(UsersFragment.newInstance(name, User.FOLLOWING), "following", false);
+        addFrament(AboutMeFragment.newInstance(name), "about", false);
     }
 
     private void setupBottomNavigation() {
@@ -57,10 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onMenuItemSelect(@IdRes int i, int i1) {
                 showThisFrament(fragmentTags.get(i1));
-
 //                getWindow().setStatusBarColor();
-
-
                 //stupid old way hahaha
 //                switch (i) {
 //                    case R.id.event_menu:
@@ -74,24 +78,10 @@ public class MainActivity extends AppCompatActivity {
 //                    case R.id.following_menu:
 //                        showThisFrament("following");
 //                        break;
-//                }
+//
             }
-
             @Override
             public void onMenuItemReselect(@IdRes int i, int i1) {
-//                switch (i) {
-//                    case R.id.event_menu:
-//                        break;
-//                    case R.id.treding_menu:
-//                        showThisFrament("trending");
-//                        break;
-//                    case R.id.started_menu:
-//                        showThisFrament("started");
-//                        break;
-//                    case R.id.following_menu:
-//                        showThisFrament("following");
-//                        break;
-//                }
                 BaseFragment baseFragment = (BaseFragment) mFragmentManager.findFragmentByTag(fragmentTags.get(i1));
                 baseFragment.upToTop();
             }

@@ -165,6 +165,7 @@ public class RetrofitMethods {
 //        toSubscribe(content, subscriber);
 //    }
 
+    // TODO: 16/5/7 add error handleing like token invalide or network Unavailable ...
     private void toSubscribe(Observable observable, Subscriber subscriber) {
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

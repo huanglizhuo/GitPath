@@ -39,7 +39,6 @@ public class BaseActivity extends AppCompatActivity {
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         mHeaderImageView = (ImageView) findViewById(R.id.header_img);
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.floating_btn);
-
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -73,11 +72,6 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setHeader(String title, String headerimgUrl) {
         mCollapsingToolbar.setTitle(title);
-//        Glide.with(GitPathApplication.getContext())
-//                .load(headerimgUrl)
-//                .centerCrop()
-//                .crossFade()
-//                .into(mHeaderImageView);
         GlideManager.getInstance().loadImage(this,headerimgUrl,mHeaderImageView);
     }
 

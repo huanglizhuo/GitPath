@@ -10,6 +10,6 @@
 
   <color name="white">#fafafa</color>
 
-  <color name="floatdisable">#fafafa</color>
+  <color name="floatdisable">#b2b2b2</color>
   <color name="floatenable">#ff4081</color>
 </resources>

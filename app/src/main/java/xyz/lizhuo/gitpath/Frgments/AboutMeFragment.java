@@ -1,10 +1,9 @@
 package xyz.lizhuo.gitpath.Frgments;
 
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,22 +18,24 @@ import rx.Subscriber;
 import xyz.lizhuo.gitpath.GithubModel.User;
 import xyz.lizhuo.gitpath.HttpHandle.RetrofitMethods;
 import xyz.lizhuo.gitpath.R;
+import xyz.lizhuo.gitpath.Utils.GlideManager;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AboutMe extends Fragment {
+public class AboutMeFragment extends Fragment {
 
-    @Bind(R.id.header_img)
-    ImageView mHeaderImg;
-    @Bind(R.id.appbar)
-    AppBarLayout mAppbar;
+    @Bind(R.id.avatar_img)
+    ImageView mAvatarImg;
     @Bind(R.id.user_name)
     EditText mUserName;
     @Bind(R.id.user_followers)
     TextView mUserFollowers;
+
     @Bind(R.id.user_following)
     TextView mUserFollowing;
+    @Bind(R.id.user_repos_count)
+    TextView mUserReposCount;
     @Bind(R.id.foww)
     LinearLayout mFoww;
     @Bind(R.id.e_mail)
@@ -47,33 +48,31 @@ public class AboutMe extends Fragment {
     EditText mJoinTime;
     @Bind(R.id.info)
     LinearLayout mInfo;
-    @Bind(R.id.user_repos_count)
-    TextView mUserReposCount;
-    @Bind(R.id.user_started_count)
-    TextView mUserStartedCount;
-    @Bind(R.id.repo_gist_place)
-    LinearLayout mRepoGistPlace;
-    @Bind(R.id.content_card)
-    CardView mContentCard;
 
     private String username;
+    private Context context;
 
-    public AboutMe() {
+    public AboutMeFragment() {
     }
 
-    public static EventFragment newInstance(String arg) {
-        EventFragment fragment = new EventFragment();
+    public static AboutMeFragment newInstance(String arg) {
+        AboutMeFragment fragment = new AboutMeFragment();
         Bundle bundle = new Bundle();
         bundle.putString("username", arg);
         fragment.setArguments(bundle);
         return fragment;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = getActivity();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_setting, container, false);
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
         ButterKnife.bind(this, view);
         username = getArguments().getString("username");
         RetrofitMethods.getInstances().getUserInfo(new Subscriber<User>() {
@@ -95,21 +94,17 @@ public class AboutMe extends Fragment {
         return view;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
     private void updadeInfo(User user) {
+        GlideManager.getInstance().loadCircleImage(context, user.getAvatar_url(), mAvatarImg);
         mUserName.setText(user.getName());
         mUserFollowers.setText(user.getFollowers() + "");
         mUserFollowing.setText(user.getFollowing() + "");
+        mUserReposCount.setText(user.getPublic_repos() + "");
+
         mJoinTime.setText("Joined on " + user.getCreated_at().substring(0, 10));
         mEMail.setText((user.getEmail() == null) ? "N/A" : user.getEmail());
         mCompany.setText((user.getCompany() == null) ? "N/A" : user.getCompany().toString());
         mLocation.setText((user.getLocation() == null) ? "N/A" : user.getLocation().toString());
-        mUserReposCount.setText(user.getPublic_repos() + "");
     }
 
 }

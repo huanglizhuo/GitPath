@@ -1,0 +1,152 @@
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:orientation="vertical"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="2dp"
+    app:cardPreventCornerOverlap="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:contentPadding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ImageView
+            android:id="@+id/avatar_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <EditText
+            android:layout_below="@id/avatar_img"
+            android:id="@+id/user_name"
+            style="@style/EditTextInfo"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:enabled="false"
+            android:textSize="20sp"
+            tools:text="lizhuo"/>
+
+        <LinearLayout
+            android:id="@+id/foww"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user_followers"
+                    style="@style/CountText"
+                    tools:text="389"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="followers"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#dddddd"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user_following"
+                    style="@style/CountText"
+                    tools:text="389"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="following"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#dddddd"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user_repos_count"
+                    style="@style/CountText"
+                    tools:text="378"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="repos"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/foww"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#75757575"/>
+
+            <EditText
+                android:id="@+id/e_mail"
+                style="@style/EditTextInfo"
+                android:drawableLeft="@drawable/common_email"
+                android:hint="email"/>
+
+            <EditText
+                android:id="@+id/company"
+                style="@style/EditTextInfo"
+                android:drawableLeft="@drawable/common_company"
+                android:hint="company"/>
+
+            <EditText
+                android:id="@+id/location"
+                style="@style/EditTextInfo"
+                android:drawableLeft="@drawable/common_location"
+                android:hint="location"/>
+
+            <EditText
+                android:id="@+id/join_time"
+                style="@style/EditTextInfo"
+                android:drawableLeft="@drawable/common_time"
+                android:hint="join time"/>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

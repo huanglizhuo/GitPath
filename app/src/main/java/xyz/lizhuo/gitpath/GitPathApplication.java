@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.facebook.stetho.Stetho;
 
+import im.fir.sdk.FIR;
+
 /**
  * Created by lizhuo on 16/3/25.
  */
@@ -15,6 +17,7 @@ public class GitPathApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Stetho.initializeWithDefaults(this);
+        FIR.init(this);
         context = getApplicationContext();
     }
 

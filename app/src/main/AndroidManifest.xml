@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+
     <application
         android:name=".GitPathApplication"
         android:allowBackup="true"
@@ -14,6 +17,9 @@
         <meta-data
             android:name="xyz.lizhuo.gitpath.Utils.MyGlideMode"
             android:value="GlideModule"/>
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="daf7af18873b8fcc2cb60511baf6f3f9"/>
 
         <activity android:name=".View.MainActivity"/>
         <activity android:name=".View.LoginActivity">

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         String name = GitHub.getInstance().getName();
         addFrament(EventFragment.newInstance(name), "event", true);
         addFrament(TrendingFragment.newInstance("", "daily"), "trending", false);
-        addFrament(RepoFragment.newInstance(name, Repo.STARTEDREPO), "started", false);
+        addFrament(RepoFragment.newInstance(name, Repo.OWNREPO), "started", false);
         addFrament(AboutMeFragment.newInstance(name), "about", false);
     }
 
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuItemReselect(@IdRes int i, int i1) {
                 BaseFragment baseFragment = (BaseFragment) mFragmentManager.findFragmentByTag(fragmentTags.get(i1));
                 baseFragment.upToTop();
+
             }
         });
     }

@@ -8,6 +8,7 @@ android:
   - extra-android-m2repository
 script:
 - ./gradlew :app:assembleRelease
+
 deploy:
   provider: releases
   api_key:
@@ -15,3 +16,8 @@ deploy:
   file: app/build/outputs/apk/app-release.apk
   on:
     repo: huanglizhuo/GitPath
+
+before_install:
+- gem install fir-cli
+after_deploy:
+- fir p app/build/outputs/apk/app-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"

@@ -14,7 +14,7 @@
 
     <ImageView
         android:id="@+id/octocat"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"

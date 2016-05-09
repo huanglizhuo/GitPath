@@ -16,9 +16,9 @@ deploy:
   provider: releases
   api_key:
     secure: XUevbP91EJi2BG33QiOaflmzvfMLzAeC0JuIC3iH9dKBIv67jPbFaC4x1fs+loFq6utQ19Pb5h2Twu70bXYLkDeWNkbAOaMZP01wMLlhDxXKbO4qDRtoSUm9w1gUJhZY8Q9kYuYZTOaOQa73AV0s8MPdJyttCP3/J1ez8IjHk3VZYLt5PR1KZxr55qn0R4gd+5Q0DPumVYJSWBCrkhZA0+1PuJ7gRO34xdH09qhNWjtsK/ZCB6k+Iz1McdaJ7z3Nz0RlWaWoP8c3qiaD0non5GUzFroslUwYU0C7+D/lA0LEb8Z4RaPUtUFfxFr7sWoFD6aF/Jj5xviL9UK4Vw1/dc67KHD0vFz4H5TAaU0kZOrYITww0xT/ZlRJgsMp+88PYQ/2hwz3D6txKzlVQ/F2ftxJUovfxXSjse1qTm8fHcupOOPZiM1mR/xPVBFvzguJC8XipxAapzEu+fQwlZdDy7DOegyqx57kjBqaGSWC7ZwjXC11ageVKCWJZ6/vvMn743jTGmK8lf5ADoGI5PrDdhPuTquM30XCG80UCtda+jKP4s/2ICxOJBXrCTd/T7ZAmjMqv8WJ4nzSc3xd9mLXTOKU1KOoX7Xlps7nTfb1Se+v47QGdvvLMgT1YQ3yGBqKFpxJyb2kxwt9o8lX5l2q6CTSNv0OR8EyeIBBJFvJIiQ=
-  file:  app/build/outputs/apk/gitpath_firim*.apk 
+  file:  app/build/outputs/apk/gitpath_develop.apk
   on:
     repo: huanglizhuo/GitPath
 
 after_deploy:
-- fir p app/build/outputs/apk/gitpath_firim*.apk  -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
+- fir p app/build/outputs/apk/gitpath_firim.apk  -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"

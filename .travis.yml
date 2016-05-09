@@ -10,6 +10,7 @@ script:
 - ./gradlew :app:assembleRelease
 before_install:
 - gem install fir-cli
+openssl aes-256-cbc -K $encrypted_2346adfc7d3c_key -iv $encrypted_2346adfc7d3c_iv -in sign.jks.enc -out sign.jks -d
 
 deploy:
   provider: releases
@@ -20,4 +21,4 @@ deploy:
     repo: huanglizhuo/GitPath
 
 after_deploy:
-- fir p app/build/outputs/apk/app-release.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
+- fir p app/build/outputs/apk/gitpath_firim*.apk  -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"

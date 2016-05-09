@@ -3,8 +3,6 @@ package xyz.lizhuo.gitpath.Utils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -62,7 +60,8 @@ public class RetrofitUtils {
         httpClientBuilder.addInterceptor(interceptor);
         httpClientBuilder.connectTimeout(5, TimeUnit.SECONDS);
         httpClientBuilder.cache(cache);
-        httpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
+//        httpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
+
 //        Gson gson = new GsonBuilder()
 //                .setLenient()
 //                .setExclusionStrategies(new ExclusionStrategy() {
@@ -106,7 +105,7 @@ public class RetrofitUtils {
             }
         };
         httpClientBuilder.addInterceptor(interceptor);
-        httpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
+//        httpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
         File cacheFile = new File(GitPathApplication.getContext().getCacheDir(), "[缓存目录]");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
         httpClientBuilder.cache(cache);

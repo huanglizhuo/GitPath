@@ -3,8 +3,6 @@ package xyz.lizhuo.gitpath;
 import android.app.Application;
 import android.content.Context;
 
-import com.facebook.stetho.Stetho;
-
 import im.fir.sdk.FIR;
 
 /**
@@ -16,7 +14,7 @@ public class GitPathApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Stetho.initializeWithDefaults(this);
+//        Stetho.initializeWithDefaults(this);
         FIR.init(this);
         context = getApplicationContext();
     }

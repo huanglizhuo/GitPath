@@ -6,9 +6,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:orientation="vertical"
-    app:cardUseCompatPadding="true"
     app:cardCornerRadius="2dp"
-    app:cardPreventCornerOverlap="true">
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,19 +19,19 @@
 
         <ImageView
             android:id="@+id/avatar_img"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
             android:layout_width="100dp"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"/>
 
         <EditText
-            android:layout_below="@id/avatar_img"
             android:id="@+id/user_name"
             style="@style/EditTextInfo"
-            android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
-            android:gravity="center"
+            android:layout_below="@id/avatar_img"
+            android:layout_centerHorizontal="true"
             android:enabled="false"
+            android:gravity="center"
             android:textSize="20sp"
             tools:text="lizhuo"/>
 
@@ -125,12 +125,6 @@
                 android:background="#75757575"/>
 
             <EditText
-                android:id="@+id/e_mail"
-                style="@style/EditTextInfo"
-                android:drawableLeft="@drawable/common_email"
-                android:hint="email"/>
-
-            <EditText
                 android:id="@+id/company"
                 style="@style/EditTextInfo"
                 android:drawableLeft="@drawable/common_company"
@@ -141,6 +135,12 @@
                 style="@style/EditTextInfo"
                 android:drawableLeft="@drawable/common_location"
                 android:hint="location"/>
+
+            <EditText
+                android:id="@+id/e_mail"
+                style="@style/EditTextInfo"
+                android:drawableLeft="@drawable/common_email"
+                android:hint="email"/>
 
             <EditText
                 android:id="@+id/join_time"

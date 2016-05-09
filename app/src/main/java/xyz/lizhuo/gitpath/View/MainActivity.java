@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onMenuItemReselect(@IdRes int i, int i1) {
+                if (fragmentTags.get(i1)=="about"){
+                    return;
+                }
                 BaseFragment baseFragment = (BaseFragment) mFragmentManager.findFragmentByTag(fragmentTags.get(i1));
                 baseFragment.upToTop();
 

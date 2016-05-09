@@ -19,7 +19,7 @@
             android:value="GlideModule"/>
         <meta-data
             android:name="BUG_HD_SDK_GENERAL_KEY"
-            android:value="daf7af18873b8fcc2cb60511baf6f3f9"/>
+            android:value="${BUGHD_TOKEN}"/>
 
         <activity android:name=".View.MainActivity"/>
         <activity android:name=".View.LoginActivity">

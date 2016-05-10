@@ -23,7 +23,7 @@ import xyz.lizhuo.gitpath.Utils.GlideManager;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AboutMeFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
     @Bind(R.id.avatar_img)
     ImageView mAvatarImg;
@@ -52,11 +52,11 @@ public class AboutMeFragment extends Fragment {
     private String username;
     private Context context;
 
-    public AboutMeFragment() {
+    public AboutFragment() {
     }
 
-    public static AboutMeFragment newInstance(String arg) {
-        AboutMeFragment fragment = new AboutMeFragment();
+    public static AboutFragment newInstance(String arg) {
+        AboutFragment fragment = new AboutFragment();
         Bundle bundle = new Bundle();
         bundle.putString("username", arg);
         fragment.setArguments(bundle);

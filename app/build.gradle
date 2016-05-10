@@ -12,10 +12,11 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
     }
 
     productFlavors{
-        develop{}
+        github{}
         firim{}
         wandoujia{}
         google{}
@@ -44,11 +45,13 @@ android {
         }
     }
 
+
+
     android.applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = "GitPath_${variant.productFlavors[0].name}-${defaultConfig.versionCode}-${defaultConfig.versionName}.apk"
+                def fileName = "GitPath_${variant.productFlavors[0].name}_${releaseTime()}_${defaultConfig.versionName}.apk"
                 output.outputFile = new File(outputFile.parent, fileName)
             }
         }
@@ -80,4 +83,8 @@ dependencies {
 
 //    compile 'com.facebook.stetho:stetho:1.3.1'
 //    compile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("UTC"))
 }

@@ -111,12 +111,22 @@
             </LinearLayout>
         </LinearLayout>
 
+        <android.support.v7.widget.AppCompatSpinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_below="@+id/foww"
+            android:entries="@array/since">
+
+        </android.support.v7.widget.AppCompatSpinner>
+
         <LinearLayout
             android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/foww"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <View
                 android:layout_width="match_parent"

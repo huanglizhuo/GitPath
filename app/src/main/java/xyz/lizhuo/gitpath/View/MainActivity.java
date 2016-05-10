@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
-import xyz.lizhuo.gitpath.Frgments.AboutMeFragment;
+import xyz.lizhuo.gitpath.Frgments.AboutFragment;
 import xyz.lizhuo.gitpath.Frgments.BaseFragment;
 import xyz.lizhuo.gitpath.Frgments.EventFragment;
 import xyz.lizhuo.gitpath.Frgments.RepoFragment;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         addFrament(EventFragment.newInstance(name), "event", true);
         addFrament(TrendingFragment.newInstance("", "daily"), "trending", false);
         addFrament(RepoFragment.newInstance(name, Repo.OWNREPO), "started", false);
-        addFrament(AboutMeFragment.newInstance(name), "about", false);
+        addFrament(AboutFragment.newInstance(name), "about", false);
     }
 
     private void setupBottomNavigation() {

@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        manifestPlaceholders = [BUGHD_TOKEN: "daf7af18873b8fcc2cb60511baf6f3f9"]
+        manifestPlaceholders = [BUGHD_TOKEN: project.hasProperty("BUGHD_TOKEN") ? BUGHD_TOKEN : System.getenv("BUGHD_TOKEN")]
         applicationId "xyz.lizhuo.gitpath"
         minSdkVersion 16
         targetSdkVersion 22

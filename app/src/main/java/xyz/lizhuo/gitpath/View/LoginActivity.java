@@ -11,11 +11,14 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -58,6 +61,18 @@ public class LoginActivity extends AppCompatActivity {
         if (GitHub.getInstance().getSavedToken() != "") {
             jumpMainActivity();
         }
+        passwordEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    loginBtn.setEnabled(false);
+                    loginBtn.performClick();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
     }
 
     private void jumpMainActivity() {
@@ -73,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onClick() {
         // TODO: 16/4/10 add loading animation
         loginBtn.setEnabled(false);
-
         String userName = usernameEt.getText().toString();
         String passWord = passwordEt.getText().toString();
         GitHub.getInstance().setName(userName);
@@ -87,7 +101,10 @@ public class LoginActivity extends AppCompatActivity {
                         sucessAnimation();
                         return;
                     } else if (response.code() == 401) {
-                        Toast.makeText(getBaseContext(), "Unauthorized Check your input", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "Username or password is wrong", Toast.LENGTH_LONG).show();
+                    } else if (response.code() == 422) {
+                        // TODO: 16/5/10 引导用户删除已存在的 token   或者改变当前登录方式,改为网页跳转式
+                        Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getBaseContext(), response.message(), Toast.LENGTH_LONG).show();
                     }

@@ -36,14 +36,16 @@ public class Utils {
         }
     }
 
-    // TODO: 16/4/8 修复关于时区的问题
     public static String getHowTime(String time){
         Date from = getDate(time);
         Calendar cal = Calendar.getInstance();
         cal.setTime(from);
         long time1 = cal.getTimeInMillis();
+        time1 += 1000 * 60 * 60 * 8;
+        //timezone utc+8
         Date to = new Date();
         cal.setTime(to);
+
         long time2 = cal.getTimeInMillis();
         long betweenMinutes=(time2-time1)/(1000*60);
 

@@ -82,6 +82,7 @@ public class EventFragment extends BaseFragment {
     }
 
     public void setAdapter(final List<Event> events) {
+
         mProgressBar.setVisibility(View.GONE);
         if (adapter == null) {
             // TODO: 16/4/11  adaptar add refrash() upadte()
@@ -110,6 +111,7 @@ public class EventFragment extends BaseFragment {
                 }
             });
             recyclerView.setAdapter(adapter);
+
         } else {
             if (isRefresh) {
                 adapter.refresh(events);

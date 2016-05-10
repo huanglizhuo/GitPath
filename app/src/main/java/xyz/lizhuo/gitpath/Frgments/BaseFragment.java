@@ -56,6 +56,7 @@ public abstract class BaseFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+
         swipeRefreshLayout.setColorSchemeColors(R.color.blue,
                 R.color.green,
                 R.color.red

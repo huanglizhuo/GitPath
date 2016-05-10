@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager mFragmentManager;
     private boolean isBackClicked = false;
 
+    private long firstClick;
+    private long lastClick;
+    private int count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,13 +84,28 @@ public class MainActivity extends AppCompatActivity {
 //                        break;
 //
             }
+
             @Override
             public void onMenuItemReselect(@IdRes int i, int i1) {
-                if (fragmentTags.get(i1)=="about"){
-                    return;
+                if (firstClick != 0 && System.currentTimeMillis() - firstClick > 300) {
+                    count = 0;
                 }
-                BaseFragment baseFragment = (BaseFragment) mFragmentManager.findFragmentByTag(fragmentTags.get(i1));
-                baseFragment.upToTop();
+                count++;
+                if (count == 1) {
+                    firstClick = System.currentTimeMillis();
+
+                    if (fragmentTags.get(i1) == "about") {
+                        return;
+                    }
+                    BaseFragment baseFragment = (BaseFragment) mFragmentManager.findFragmentByTag(fragmentTags.get(i1));
+                    baseFragment.upToTop();
+
+                } else if (count == 2) {
+                    lastClick = System.currentTimeMillis();
+                    if (lastClick - firstClick < 300) {
+                        // TODO: 16/5/10 doubleclick to refrash list
+                    }
+                }
 
             }
         });
@@ -139,4 +158,5 @@ public class MainActivity extends AppCompatActivity {
             f = null;
         }
     }
+
 }

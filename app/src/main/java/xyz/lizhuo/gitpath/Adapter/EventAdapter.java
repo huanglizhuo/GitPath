@@ -75,7 +75,7 @@ public class EventAdapter extends BaseAdapter {
 
     public void update(List<Event> events) {
         list.addAll(events);
-        notifyDataSetChanged();
+//        notifyDataSetChanged();
         if (events != null && events.size() > 0) {
             int startPosition = list.size();
             list.addAll(events);

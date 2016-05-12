@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -36,18 +35,19 @@ public class AboutFragment extends Fragment {
     TextView mUserFollowing;
     @Bind(R.id.user_repos_count)
     TextView mUserReposCount;
-    @Bind(R.id.foww)
-    LinearLayout mFoww;
-    @Bind(R.id.e_mail)
-    EditText mEMail;
-    @Bind(R.id.company)
-    EditText mCompany;
-    @Bind(R.id.location)
-    EditText mLocation;
-    @Bind(R.id.join_time)
-    EditText mJoinTime;
-    @Bind(R.id.info)
-    LinearLayout mInfo;
+
+//    @Bind(R.id.foww)
+//    LinearLayout mFoww;
+//    @Bind(R.id.e_mail)
+//    EditText mEMail;
+//    @Bind(R.id.company)
+//    EditText mCompany;
+//    @Bind(R.id.location)
+//    EditText mLocation;
+//    @Bind(R.id.join_time)
+//    EditText mJoinTime;
+//    @Bind(R.id.info)
+//    LinearLayout mInfo;
 
     private String username;
     private Context context;
@@ -101,10 +101,10 @@ public class AboutFragment extends Fragment {
         mUserFollowing.setText(user.getFollowing() + "");
         mUserReposCount.setText(user.getPublic_repos() + "");
 
-        mJoinTime.setText("Joined on " + user.getCreated_at().substring(0, 10));
-        mEMail.setText((user.getEmail() == null) ? "N/A" : user.getEmail());
-        mCompany.setText((user.getCompany() == null) ? "N/A" : user.getCompany().toString());
-        mLocation.setText((user.getLocation() == null) ? "N/A" : user.getLocation().toString());
+//        mJoinTime.setText("Joined on " + user.getCreated_at().substring(0, 10));
+//        mEMail.setText((user.getEmail() == null) ? "N/A" : user.getEmail());
+//        mCompany.setText((user.getCompany() == null) ? "N/A" : user.getCompany().toString());
+//        mLocation.setText((user.getLocation() == null) ? "N/A" : user.getLocation().toString());
     }
 
 }

@@ -60,7 +60,7 @@ public class EventAdapter extends BaseAdapter {
             action_img.setImageDrawable(ContextCompat.getDrawable(GitPathApplication.getContext(), R.drawable.star_black));
         }
         baseViewHolder.getTextView(R.id.repo_name_tv).setText(event.getRepo().getName());
-        baseViewHolder.getTextView(R.id.past_time_tv).setText(Utils.getHowTime(event.getCreated_at()));
+        baseViewHolder.getTextView(R.id.past_time_tv).setText(Utils.getBetweenTime(event.getCreated_at()));
 
         ImageView avatar = baseViewHolder.getImageView(R.id.avatar_spv);
         GlideManager.getInstance().loadCircleImage(context, event.getActor().getAvatar_url(), avatar);

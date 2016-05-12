@@ -36,7 +36,7 @@ public class Utils {
         }
     }
 
-    public static String getHowTime(String time){
+    public static String getBetweenTime(String time) {
         Date from = getDate(time);
         Calendar cal = Calendar.getInstance();
         cal.setTime(from);

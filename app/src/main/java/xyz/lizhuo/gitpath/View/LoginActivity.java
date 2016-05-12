@@ -127,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
         final Animator fade = AnimatorInflater.loadAnimator(this, R.animator.fade_out);
         fade.setTarget(mInputPlace);
         fade.start();
+        // TODO: 16/5/12 add loginbtn fade animation  add activity jum animation
 
         final Animator succes = AnimatorInflater.loadAnimator(this, R.animator.zoom_out_fade);
         succes.setTarget(mOctocat);

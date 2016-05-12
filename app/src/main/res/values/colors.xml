@@ -12,6 +12,8 @@
 
     <color name="gray">#cccccc</color>
 
+    <color name="devidecolor">#f1f1f1f1</color>
+
     <color name="floatdisable">#b2b2b2</color>
     <color name="floatenable">#ff4081</color>
 </resources>

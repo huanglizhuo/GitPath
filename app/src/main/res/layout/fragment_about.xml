@@ -1,255 +1,286 @@
-<LinearLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:orientation="vertical"
-        app:cardCornerRadius="2dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            app:contentPadding="16dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:cardCornerRadius="2dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
-            <ImageView
-                android:id="@+id/avatar_img"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"/>
-
-            <EditText
-                android:id="@+id/user_name"
-                style="@style/EditTextInfo"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_below="@id/avatar_img"
-                android:layout_centerHorizontal="true"
-                android:enabled="false"
-                android:gravity="center"
-                android:textSize="20sp"
-                tools:text="lizhuo"/>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                app:contentPadding="16dp"
+                >
 
-            <LinearLayout
-                android:id="@+id/foww"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/user_name"
-                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/avatar_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"/>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/user_followers"
-                        style="@style/CountText"
-                        tools:text="389"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="followers"
-                        />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#dddddd"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/user_following"
-                        style="@style/CountText"
-                        tools:text="389"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="following"
-                        />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#dddddd"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/user_repos_count"
-                        style="@style/CountText"
-                        tools:text="378"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="repos"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/foww"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <View
+                <EditText
+                    android:id="@+id/user_name"
+                    style="@style/EditTextInfo"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#75757575"/>
+                    android:layout_below="@id/avatar_img"
+                    android:layout_centerHorizontal="true"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    tools:text="lizhuo"/>
 
-                <EditText
-                    android:id="@+id/company"
-                    style="@style/EditTextInfo"
-                    android:drawableLeft="@drawable/common_company"
-                    android:hint="company"/>
+                <LinearLayout
+                    android:id="@+id/foww"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_name"
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/location"
-                    style="@style/EditTextInfo"
-                    android:drawableLeft="@drawable/common_location"
-                    android:hint="location"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/e_mail"
-                    style="@style/EditTextInfo"
-                    android:drawableLeft="@drawable/common_email"
-                    android:hint="email"/>
+                        <TextView
+                            android:id="@+id/user_followers"
+                            style="@style/CountText"
+                            tools:text="389"
+                            />
 
-                <EditText
-                    android:id="@+id/join_time"
-                    style="@style/EditTextInfo"
-                    android:drawableLeft="@drawable/common_time"
-                    android:hint="join time"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="followers"
+                            />
+                    </LinearLayout>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        app:cardCornerRadius="2dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#dddddd"/>
 
-        <RelativeLayout
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/user_following"
+                            style="@style/CountText"
+                            tools:text="389"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="following"
+                            />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#dddddd"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/user_repos_count"
+                            style="@style/CountText"
+                            tools:text="378"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="repos"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/foww"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#75757575"/>
+
+                    <EditText
+                        android:id="@+id/company"
+                        style="@style/EditTextInfo"
+                        android:drawableLeft="@drawable/common_company"
+                        android:hint="company"/>
+
+                    <EditText
+                        android:id="@+id/location"
+                        style="@style/EditTextInfo"
+                        android:drawableLeft="@drawable/common_location"
+                        android:hint="location"/>
+
+                    <EditText
+                        android:id="@+id/e_mail"
+                        style="@style/EditTextInfo"
+                        android:drawableLeft="@drawable/common_email"
+                        android:hint="email"/>
+
+                    <EditText
+                        android:id="@+id/join_time"
+                        style="@style/EditTextInfo"
+                        android:drawableLeft="@drawable/common_time"
+                        android:hint="join time"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="2dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/trend_setting_tv"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Trend setting"/>
-
-            <LinearLayout
-                android:id="@+id/since_lin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/trend_setting_tv"
-                android:orientation="horizontal">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                >
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/trend_setting_tv"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="since"/>
+                    android:gravity="center"
+                    android:text="Trend Setting"
+                    android:textSize="18sp"/>
 
-                <android.support.v7.widget.AppCompatSpinner
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/since_lin"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:entries="@array/since">
-                </android.support.v7.widget.AppCompatSpinner>
-            </LinearLayout>
+                    android:layout_below="@id/trend_setting_tv"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/language_lin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/since_lin"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="since"/>
 
-                <TextView
-                    android:layout_width="0dp"
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/since">
+                    </android.support.v7.widget.AppCompatSpinner>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/language_lin"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="language"/>
+                    android:layout_below="@+id/since_lin"
+                    android:orientation="horizontal">
 
-                <android.support.v7.widget.AppCompatSpinner
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/bbn_fixed_item_ripple_color"
-                    android:entries="@array/language">
-                </android.support.v7.widget.AppCompatSpinner>
-            </LinearLayout>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="language"/>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:orientation="vertical"
-        app:cardCornerRadius="2dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/bbn_fixed_item_ripple_color"
+                        android:entries="@array/language">
+                    </android.support.v7.widget.AppCompatSpinner>
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="2dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/notification_tell_tv"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Notifacations"/>
+                android:layout_marginTop="10dp"
+                android:padding="8dp">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/notification_rcl"
+                <TextView
+                    android:id="@+id/notification_tell_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Notifacations"
+                    android:textSize="18sp"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/notification_rcl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/notification_tell_tv"
+                    android:layout_marginTop="4dp">
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="2dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </android.support.v7.widget.RecyclerView>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="About This App\n \n \n Donate"
+                android:textSize="20sp"/>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

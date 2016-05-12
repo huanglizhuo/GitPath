@@ -44,16 +44,14 @@ public class MainActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
         fragmentTags = new ArrayList<>();
         setupBottomNavigation();
-        initFraments();
     }
 
     // TODO: 16/5/8 try to fix restart the fragment overlaped
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        removeAllFragment();
-//        initFraments();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initFraments();
+    }
 
     private void initFraments() {
         String name = GitHub.getInstance().getName();
@@ -69,20 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuItemSelect(@IdRes int i, int i1) {
                 showThisFrament(fragmentTags.get(i1));
 //                getWindow().setStatusBarColor();
-                //stupid old way hahaha
-//                switch (i) {
-//                    case R.id.event_menu:
-//                        break;
-//                    case R.id.treding_menu:
-//                        showThisFrament("trending");
-//                        break;
-//                    case R.id.started_menu:
-//                        showThisFrament("started");
-//                        break;
-//                    case R.id.following_menu:
-//                        showThisFrament("following");
-//                        break;
-//
+
             }
 
             @Override

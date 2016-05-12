@@ -1,74 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
     android:orientation="vertical"
-    app:cardCornerRadius="2dp"
-    app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16sp">
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/avatar_spv"
+        android:orientation="vertical"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/repo_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textSize="20sp"
+            tools:text="Kotlin-in-chinese"/>
+
+        <TextView
+            android:id="@+id/notification_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="15sp"
+            tools:text="gold-miner hahahahah"/>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/avatar_spv"
-            android:layout_weight="8"
-            android:orientation="vertical"
-            android:paddingLeft="16dp">
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/repo_name_tv"
-                android:layout_width="wrap_content"
+                android:id="@+id/notification_since_tv"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:textSize="20sp"
-                tools:text="Kotlin-in-chinese"/>
-
+                android:textSize="13sp"
+                tools:text="2 houes ago"/>
             <TextView
-                android:id="@+id/notification_title_tv"
-                android:layout_width="wrap_content"
+                android:id="@+id/notification_reason_tv"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textSize="15sp"
-                tools:text="gold-miner hahahahah"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/notification_reason_tv"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textSize="13sp"
-                    tools:text="metion"/>
-
-                <TextView
-                    android:id="@+id/notification_since_tv"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7sp"
-                    android:textSize="13sp"
-                    tools:text="2 houes ago"/>
-            </LinearLayout>
+                android:layout_marginLeft="7sp"
+                android:gravity="left"
+                android:textSize="13sp"
+                tools:text="metion"/>
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:src="@drawable/mute"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
     </LinearLayout>
 
-</android.support.v7.widget.CardView>
+    <View
+        android:background="@color/devidecolor"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_margin="6dp"
+        android:layout_height="1dp"/>
+</LinearLayout>
+

@@ -29,6 +29,7 @@ public abstract class BaseFragment extends Fragment {
     public boolean isRefresh = false;
     public String username = "huanglizhuo";
 
+    // TODO: 16/5/12 add refresh method , load more , getDate
     public LinearLayoutManager layoutManager;
 
     public BaseFragment() {
@@ -61,7 +62,7 @@ public abstract class BaseFragment extends Fragment {
                 R.color.green,
                 R.color.red
         );
-        recyclerView.setHasFixedSize(true);
+
         initViews();
     }
 

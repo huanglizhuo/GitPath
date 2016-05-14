@@ -1,6 +1,16 @@
 # GitPath
 [![Build Status](https://travis-ci.org/huanglizhuo/GitPath.svg?branch=master)](https://travis-ci.org/huanglizhuo/GitPath)
 
+一个 Github 客户端，纯属为满足个人需求
+
+![icon](./app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+
+图标太丑了 ，哪位朋友可以贡献枚图标（360度冰天雪地跪求）
+
+还有很多地方在一步一步优化 :(
+
+以下是为装逼
+
 An unofficial Github client 
 
 ![screenshoot1](./screenshot/screen1.gif)

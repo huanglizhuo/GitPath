@@ -2,28 +2,38 @@ package xyz.lizhuo.gitpath.Frgments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Subscriber;
 import xyz.lizhuo.gitpath.Adapter.NotificationAdapter;
+import xyz.lizhuo.gitpath.GithubModel.GitHub;
 import xyz.lizhuo.gitpath.GithubModel.Notification;
+import xyz.lizhuo.gitpath.GithubModel.Repo;
 import xyz.lizhuo.gitpath.GithubModel.User;
-import xyz.lizhuo.gitpath.HttpHandle.RetrofitMethods;
+import xyz.lizhuo.gitpath.HttpMethods.RetrofitMethods;
 import xyz.lizhuo.gitpath.R;
 import xyz.lizhuo.gitpath.Utils.GlideManager;
+import xyz.lizhuo.gitpath.Activity.OneFragmentActivity;
+import xyz.lizhuo.gitpath.Activity.UserDetailActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,8 +57,34 @@ public class AboutFragment extends Fragment {
 
     @Bind(R.id.notification_tell_tv)
     TextView mNotification;
+    @Bind(R.id.foww)
+    LinearLayout mFoww;
+    @Bind(R.id.company)
+    EditText mCompany;
+    @Bind(R.id.location)
+    EditText mLocation;
+    @Bind(R.id.e_mail)
+    EditText mEMail;
+    @Bind(R.id.join_time)
+    EditText mJoinTime;
+    @Bind(R.id.info)
+    LinearLayout mInfo;
+    @Bind(R.id.trend_setting_tv)
+    TextView mTrendSettingTv;
+    @Bind(R.id.since_spinner)
+    AppCompatSpinner mSinceSpinner;
+    @Bind(R.id.since_lin)
+    LinearLayout mSinceLin;
+    @Bind(R.id.lanaguage_spinner)
+    AppCompatSpinner mLanaguageSpinner;
+    @Bind(R.id.language_lin)
+    LinearLayout mLanguageLin;
+    @Bind(R.id.app_author_detail)
+    CardView mAppAuthorDetail;
+
 
     private String username;
+    private String avatar_url;
     private Context context;
 
     public AboutFragment() {
@@ -74,6 +110,9 @@ public class AboutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
         ButterKnife.bind(this, view);
         username = getArguments().getString("username");
+
+        initSpinner();
+
         RetrofitMethods.getInstances().getUserInfo(new Subscriber<User>() {
             @Override
             public void onCompleted() {
@@ -110,8 +149,39 @@ public class AboutFragment extends Fragment {
         return view;
     }
 
+    private void initSpinner() {
+// TODO: 16/5/14 add save data mode by disable the user avatar
+        mSinceSpinner.setSelection(GitHub.getInstance().getTrend_since());
+
+        mSinceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                GitHub.getInstance().setTrend_since(position);
+//                RxBus.getDefault().send();
+                // TODO: 16/5/13 try to use rxbus to update TendingFrament 's content
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mLanaguageSpinner.setSelection(GitHub.getInstance().getTrend_lanaguage());
+        mLanaguageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                GitHub.getInstance().setTrend_lanaguage(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
 
     private void updadeInfo(User user) {
+        avatar_url = user.getAvatar_url();
         GlideManager.getInstance().loadCircleImage(context, user.getAvatar_url(), mAvatarImg);
         mUserName.setText(user.getName());
         mUserFollowers.setText(user.getFollowers() + "");
@@ -125,6 +195,9 @@ public class AboutFragment extends Fragment {
     }
 
     private void setNotification(List<Notification> notifications) {
+
+        // TODO: 16/5/14 add notification detail like this https://github.com/Meetic/MaryPopup
+
         if (notifications.size() == 0) {
             mNotification.setTextSize(26);
             mNotification.setText("No Unread Notification");
@@ -139,5 +212,36 @@ public class AboutFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @OnClick({R.id.user_followers, R.id.user_following, R.id.user_repos_count})
+    public void onClick(View view) {
+        // TODO: 16/5/14 maybe use implicit intent is better
+        Intent intent = new Intent(context, OneFragmentActivity.class);
+        intent.putExtra("userLogin", username);
+        intent.putExtra("avatar_url", avatar_url);
+        switch (view.getId()) {
+            case R.id.user_followers:
+                intent.putExtra("type", User.FOLLOWER);
+                context.startActivity(intent);
+                break;
+            case R.id.user_following:
+                intent.putExtra("type", User.FOLLOWING);
+                context.startActivity(intent);
+                break;
+            case R.id.user_repos_count:
+                intent.putExtra("type", Repo.OWNREPO);
+                context.startActivity(intent);
+                break;
+            case R.id.app_author_detail:
+                Intent detailIntent = new Intent(context, UserDetailActivity.class);
+                detailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                detailIntent.putExtra("userlogin", username);
+                detailIntent.putExtra("avatar_url", avatar_url);
+                context.startActivity(detailIntent);
+                break;
+            default:
+                break;
+        }
     }
 }

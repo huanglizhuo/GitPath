@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.View;
+package xyz.lizhuo.gitpath.Activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -76,11 +76,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void jumpMainActivity() {
-//        Intent intent = new Intent(LoginActivity.this, UserDetailActivity.class);
-//        intent.putExtra("userlogin", "huanglizhuo");
-//        intent.putExtra("avatar_url", "https://avatars.githubusercontent.com/u/3874324?v=3");
-//        intent.putExtra("reponame", "huanglizhuo/kotlin-in-chinese");
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        overridePendingTransition(R.animator.scale_in, R.animator.alpha_out);
         finish();
     }
 
@@ -98,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.code() == 201) {
                         GitHub.getInstance()
                                 .setToken(response.body().getToken());
-                        sucessAnimation();
+                        sucess();
                         return;
                     } else if (response.code() == 401) {
                         Toast.makeText(getBaseContext(), "Username or password is wrong", Toast.LENGTH_LONG).show();
@@ -119,11 +116,11 @@ public class LoginActivity extends AppCompatActivity {
             });
         } else {
             fail();
-            Toast.makeText(this, "用户名密码不可为空", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "null input", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void sucessAnimation() {
+    private void sucess() {
         final Animator fade = AnimatorInflater.loadAnimator(this, R.animator.fade_out);
         fade.setTarget(mInputPlace);
         fade.start();
@@ -171,7 +168,7 @@ public class LoginActivity extends AppCompatActivity {
                 Keyframe.ofFloat(1f, 0f)
         );
         ObjectAnimator.ofPropertyValuesHolder(mOctocat, pvhTranslateX)
-                .setDuration(1000).start();
+                .setDuration(500).start();
     }
 
     private void getToken(String credentials, Callback<Token> callback) {

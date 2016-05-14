@@ -3,10 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginTop="2dp"
     android:layout_height="match_parent"
     >
 
     <LinearLayout
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            app:cardUseCompatPadding="true"
             app:cardCornerRadius="2dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            app:cardPreventCornerOverlap="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -31,7 +34,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"/>
+                    android:layout_marginTop="20dp"/>
 
                 <EditText
                     android:id="@+id/user_name"
@@ -164,11 +167,11 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/card_margin_top"
             android:orientation="vertical"
+            app:cardUseCompatPadding="true"
             app:cardCornerRadius="2dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            app:cardPreventCornerOverlap="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -200,6 +203,7 @@
                         android:text="since"/>
 
                     <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/since_spinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -221,9 +225,11 @@
                         android:text="language"/>
 
                     <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/lanaguage_spinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/gray"
                         android:backgroundTint="@color/bbn_fixed_item_ripple_color"
                         android:entries="@array/language">
                     </android.support.v7.widget.AppCompatSpinner>
@@ -234,11 +240,11 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/card_margin_top"
             android:orientation="vertical"
+            app:cardUseCompatPadding="true"
             app:cardCornerRadius="2dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            app:cardPreventCornerOverlap="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -251,7 +257,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Notifacations"
+                    android:text="Unread Notifacations"
                     android:textSize="18sp"/>
 
                 <android.support.v7.widget.RecyclerView
@@ -268,17 +274,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/card_margin_top"
             android:orientation="vertical"
+            android:id="@+id/app_author_detail"
+            app:cardUseCompatPadding="true"
             app:cardCornerRadius="2dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            app:cardPreventCornerOverlap="true">
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="About This App\n \n \n Donate"
+                android:text="\n\n About Author\n \n "
                 android:textSize="20sp"/>
         </android.support.v7.widget.CardView>
     </LinearLayout>

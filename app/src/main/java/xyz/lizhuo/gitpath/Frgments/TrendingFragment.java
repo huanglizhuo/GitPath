@@ -18,9 +18,9 @@ import rx.Subscriber;
 import xyz.lizhuo.gitpath.Adapter.EndlessScrollListener;
 import xyz.lizhuo.gitpath.Adapter.RepoAdapter;
 import xyz.lizhuo.gitpath.GithubModel.Repo;
-import xyz.lizhuo.gitpath.HttpHandle.TrendingMethods;
+import xyz.lizhuo.gitpath.HttpMethods.TrendingMethods;
 import xyz.lizhuo.gitpath.R;
-import xyz.lizhuo.gitpath.View.RepoDetailActivity;
+import xyz.lizhuo.gitpath.Activity.RepoDetailActivity;
 
 /**
  * A simple {@link Fragment} subclass.

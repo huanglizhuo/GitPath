@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.View;
+package xyz.lizhuo.gitpath.Activity;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.View;
+package xyz.lizhuo.gitpath.Activity;
 
 import android.content.res.ColorStateList;
 import android.os.Build;
@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import xyz.lizhuo.gitpath.HttpHandle.RetrofitMethods;
+import xyz.lizhuo.gitpath.HttpMethods.RetrofitMethods;
 import xyz.lizhuo.gitpath.R;
 import xyz.lizhuo.gitpath.Utils.GlideManager;
 

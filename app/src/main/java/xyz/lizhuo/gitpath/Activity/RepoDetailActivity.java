@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.View;
+package xyz.lizhuo.gitpath.Activity;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;

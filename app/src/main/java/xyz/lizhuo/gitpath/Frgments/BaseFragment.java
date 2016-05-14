@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import xyz.lizhuo.gitpath.HttpHandle.RetrofitMethods;
+import xyz.lizhuo.gitpath.HttpMethods.RetrofitMethods;
 import xyz.lizhuo.gitpath.R;
 
 /**

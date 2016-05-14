@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.View;
+package xyz.lizhuo.gitpath.Activity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -138,7 +138,7 @@ public class UserDetailActivity extends BaseActivity {
 
     @OnClick({R.id.user_followers, R.id.user_following, R.id.user_repos_count})
     public void onClick(View view) {
-        Intent intent = new Intent(UserDetailActivity.this, BlankActivity.class);
+        Intent intent = new Intent(UserDetailActivity.this, OneFragmentActivity.class);
         intent.putExtra("userLogin", userLogin);
         intent.putExtra("avatar_url", avatar_url);
         switch (view.getId()) {

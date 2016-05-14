@@ -21,17 +21,17 @@
             android:name="BUG_HD_SDK_GENERAL_KEY"
             android:value="${BUGHD_TOKEN}"/>
 
-        <activity android:name=".View.MainActivity"/>
-        <activity android:name=".View.LoginActivity">
+        <activity android:name=".Activity.MainActivity"/>
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".View.RepoDetailActivity"/>
-        <activity android:name=".View.UserDetailActivity"/>
-        <activity android:name=".View.BlankActivity">
+        <activity android:name=".Activity.RepoDetailActivity"/>
+        <activity android:name=".Activity.UserDetailActivity"/>
+        <activity android:name=".Activity.OneFragmentActivity">
         </activity>
     </application>
 

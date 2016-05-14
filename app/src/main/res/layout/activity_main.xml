@@ -19,6 +19,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
+        android:layout_marginTop="5dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:id="@+id/fragment_container"

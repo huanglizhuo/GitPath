@@ -20,7 +20,7 @@ import xyz.lizhuo.gitpath.Adapter.EventAdapter;
 import xyz.lizhuo.gitpath.GithubModel.Event;
 import xyz.lizhuo.gitpath.R;
 import xyz.lizhuo.gitpath.Utils.RxBus;
-import xyz.lizhuo.gitpath.View.RepoDetailActivity;
+import xyz.lizhuo.gitpath.Activity.RepoDetailActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +31,7 @@ public class EventFragment extends BaseFragment {
     public EventFragment() {
     }
 
+    // TODO: 16/5/14 change the recyclerview's layout to gridelayout
     public static EventFragment newInstance(String arg) {
         EventFragment fragment = new EventFragment();
         Bundle bundle = new Bundle();

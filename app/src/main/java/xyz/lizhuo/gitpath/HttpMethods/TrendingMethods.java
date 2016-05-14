@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.HttpHandle;
+package xyz.lizhuo.gitpath.HttpMethods;
 
 import java.util.List;
 

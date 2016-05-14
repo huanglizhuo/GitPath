@@ -17,14 +17,20 @@ public class GitHub {
     private String token;
     private String code;
     private String name;
+
+
+    private int trend_since;
+    private int trend_lanaguage;
+
     private GitHub(Context context) {
         this.context = context;
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
         token = sharedPreferences.getString(TOKEN_KEY, "");
         code = sharedPreferences.getString(CODE_KEY, "");
         name = sharedPreferences.getString("name", "");
+        trend_since = sharedPreferences.getInt("since", 0);
+        trend_lanaguage = sharedPreferences.getInt("lanaguage", 0);
     }
-
 
 
     private static class SingleHolder {
@@ -67,4 +73,28 @@ public class GitHub {
         editor.putString(CODE_KEY, code);
         editor.commit();
     }
+
+    public int getTrend_since() {
+        return trend_since;
+    }
+
+    public void setTrend_since(int trend_since) {
+        this.trend_since = trend_since;
+        SharedPreferences.Editor editor = context.getSharedPreferences(NAME, Context.MODE_PRIVATE).edit();
+        editor.putInt("since", trend_since);
+        editor.commit();
+    }
+
+    public int getTrend_lanaguage() {
+        return trend_lanaguage;
+    }
+
+    public void setTrend_lanaguage(int trend_lanaguage) {
+        this.trend_lanaguage = trend_lanaguage;
+        SharedPreferences.Editor editor = context.getSharedPreferences(NAME, Context.MODE_PRIVATE).edit();
+        editor.putInt("lanaguage", trend_lanaguage);
+        editor.commit();
+    }
+
+
 }

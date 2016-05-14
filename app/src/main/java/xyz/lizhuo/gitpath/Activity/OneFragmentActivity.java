@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.View;
+package xyz.lizhuo.gitpath.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import xyz.lizhuo.gitpath.GithubModel.Repo;
 import xyz.lizhuo.gitpath.GithubModel.User;
 import xyz.lizhuo.gitpath.R;
 
-public class BlankActivity extends AppCompatActivity {
+public class OneFragmentActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
 
@@ -31,6 +31,7 @@ public class BlankActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userLogin = intent.getStringExtra("userLogin");
         avatar_url = intent.getStringExtra("avatar_url");
+        // TODO: 16/5/13 it seems this avatar_url is useless
         type = intent.getIntExtra("type", 1);
         initContent();
     }
@@ -42,7 +43,7 @@ public class BlankActivity extends AppCompatActivity {
                 addFrament(UsersFragment.newInstance(userLogin, User.FOLLOWER), "user");
                 break;
             case User.FOLLOWING:
-                mToolbar.setTitle(userLogin+"'s following");
+                mToolbar.setTitle(userLogin+" is following");
                 addFrament(UsersFragment.newInstance(userLogin, User.FOLLOWING), "user");
                 break;
             case Repo.OWNREPO:

@@ -4,4 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="detail_backdrop_height">256dp</dimen>
     <dimen name="spacing_medium">8dp</dimen>
+
+    <dimen name="card_margin_top">2dp</dimen>
+
+
 </resources>

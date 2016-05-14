@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import xyz.lizhuo.gitpath.R;
 
@@ -27,7 +28,7 @@ public class GlideManager {
         // TODO: 16/4/16  change transform make it more smothe
         Glide.with(context)
                 .load(url)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .transform(new GlideCircleTransform(context))
                 .placeholder(R.drawable.octorcat_black)
                 .into(imageView);
@@ -44,9 +45,9 @@ public class GlideManager {
     public void loadImage(Context context,String url,ImageView imageView){
         Glide.with(context)
                 .load(url)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .crossFade()
+                .centerCrop()
                 .into(imageView);
     }
 }

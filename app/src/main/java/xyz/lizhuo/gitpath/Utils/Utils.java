@@ -78,7 +78,6 @@ public class Utils {
         return Base64.encodeToString(content, Base64.DEFAULT);
     }
 
-
     public static String loadMarkdownToHtml(final String txt, final String cssFile) {
         String html;
         if (null != cssFile) {
@@ -87,6 +86,7 @@ public class Utils {
         }
         return null;
     }
+
 
 
 }

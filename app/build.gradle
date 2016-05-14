@@ -47,15 +47,15 @@ android {
 
 
 
-    android.applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = "GitPath_${variant.productFlavors[0].name}_${releaseTime()}_${defaultConfig.versionName}.apk"
-                output.outputFile = new File(outputFile.parent, fileName)
-            }
-        }
-    }
+//    android.applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                def fileName = "GitPath_${releaseTime()}_${defaultConfig.versionName}.apk"
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
+//    }
 }
 
 dependencies {
@@ -86,5 +86,5 @@ dependencies {
 }
 
 def releaseTime() {
-    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("UTC"))
+    return new Date().format("yyyyMMddHH", TimeZone.getTimeZone("UTC"))
 }

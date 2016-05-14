@@ -18,7 +18,7 @@ import xyz.lizhuo.gitpath.Adapter.EndlessScrollListener;
 import xyz.lizhuo.gitpath.Adapter.UserAdapter;
 import xyz.lizhuo.gitpath.GithubModel.User;
 import xyz.lizhuo.gitpath.R;
-import xyz.lizhuo.gitpath.View.UserDetailActivity;
+import xyz.lizhuo.gitpath.Activity.UserDetailActivity;
 
 /**
  * A simple {@link Fragment} subclass.

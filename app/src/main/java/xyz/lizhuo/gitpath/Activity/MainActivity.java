@@ -1,11 +1,13 @@
-package xyz.lizhuo.gitpath.View;
+package xyz.lizhuo.gitpath.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -32,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean isBackClicked = false;
 
     private long firstClick;
-    private long lastClick;
+    private long lastClick;//use for double check inplement
     private int count;
+
+    private String currentFramentTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +48,48 @@ public class MainActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
         fragmentTags = new ArrayList<>();
         setupBottomNavigation();
+        initFraments();
     }
 
     // TODO: 16/5/8 try to fix restart the fragment overlaped
+    // TODO: 16/5/13 add an custom framentmanager use map or something else to manage
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("ss","start");
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        initFraments();
+        Log.e("ss","resume");
+        showThisFrament(currentFramentTag);
+    }
+
+    @Override
+    protected void onPause() {
+        Log.e("ss","pause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.e("ss","stop");
+        super.onStop();
     }
 
     private void initFraments() {
         String name = GitHub.getInstance().getName();
         addFrament(EventFragment.newInstance(name), "event", true);
-        addFrament(TrendingFragment.newInstance("", "daily"), "trending", false);
-        addFrament(RepoFragment.newInstance(name, Repo.OWNREPO), "started", false);
+        Log.e("ss","initframent");
+        // TODO: 16/5/13 ugly code try to make it simple and stupid
+        String since = getResources().getStringArray(R.array.since)[GitHub.getInstance().getTrend_since()];
+        String language = getResources().getStringArray(R.array.language)[GitHub.getInstance().getTrend_lanaguage()];
+
+        addFrament(TrendingFragment.newInstance(language, since), "trending", false);
+
+        addFrament(RepoFragment.newInstance(name, Repo.STARTEDREPO), "started", false);
         addFrament(AboutFragment.newInstance(name), "about", false);
     }
 
@@ -97,6 +129,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // TODO: 16/5/13 modify this avoid overlap
+    }
+
+    @Override
     public void onBackPressed() {
         if (isBackClicked) {
             finish();
@@ -107,11 +145,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addFrament(Fragment fragment, String tag, boolean showNow) {
+        Log.e("ss","add frgment"+tag);
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         transaction.add(R.id.fragment_container, fragment, tag);
         fragmentTags.add(tag);
         if (showNow) {
             transaction.show(fragment);
+            currentFramentTag = tag;
         } else {
             transaction.hide(fragment);
         }
@@ -120,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showThisFrament(String tag) {
+        Log.e("ss","showframent");
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         for (String i : fragmentTags) {
             Fragment f = mFragmentManager.findFragmentByTag(i);
@@ -129,19 +170,13 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 if (i == tag) {
                     transaction.show(f);
+                    currentFramentTag = tag;
                 } else {
                     transaction.hide(f);
                 }
             }
         }
         transaction.commit();
-    }
-
-    private void removeAllFragment() {
-        for (String i : fragmentTags) {
-            Fragment f = mFragmentManager.findFragmentByTag(i);
-            f = null;
-        }
     }
 
 }

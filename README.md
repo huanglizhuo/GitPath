@@ -15,6 +15,6 @@ using [BottomNavigation](https://github.com/sephiroth74/Material-BottomNavigatio
 using [travis-ci](https://travis-ci.org) to continuous integration
 
 Scan the QR Code to download 
-![screenshoot2](./screenshot/screen2.gif)
+![screenshoot2](./screenshot/qrcode.png)
 
 or input http://fir.im/8nfk in your browser to download 

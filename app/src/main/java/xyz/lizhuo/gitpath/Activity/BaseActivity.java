@@ -77,7 +77,6 @@ public class BaseActivity extends AppCompatActivity {
 
     private void initTransition() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            // TODO: 16/4/11 replace with RxBus
             String transitionName = getIntent().getStringExtra("transitionName");
             if (transitionName != null) {
                 mHeaderImageView.setTransitionName(transitionName);

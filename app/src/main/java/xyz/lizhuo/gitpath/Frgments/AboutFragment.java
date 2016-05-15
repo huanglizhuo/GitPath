@@ -156,8 +156,6 @@ public class AboutFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 GitHub.getInstance().setTrend_since(position);
-//                RxBus.getDefault().send();
-                // TODO: 16/5/13 try to use rxbus to update TendingFrament 's content
             }
 
             @Override
@@ -181,7 +179,7 @@ public class AboutFragment extends Fragment {
 
     private void updadeInfo(User user) {
         avatar_url = user.getAvatar_url();
-        GlideManager.getInstance().loadCircleImage(context, user.getAvatar_url(), mAvatarImg);
+        GlideManager.getInstance().loadCircleImage(context, avatar_url, mAvatarImg);
         mUserName.setText(user.getName());
         mUserFollowers.setText(user.getFollowers() + "");
         mUserFollowing.setText(user.getFollowing() + "");

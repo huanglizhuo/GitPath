@@ -4,13 +4,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
-
+	def currentVersionCode = getVersionCode()
     defaultConfig {
         manifestPlaceholders = [BUGHD_TOKEN: project.hasProperty("BUGHD_TOKEN") ? BUGHD_TOKEN : System.getenv("BUGHD_TOKEN")]
         applicationId "xyz.lizhuo.gitpath"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
+		versionCode currentVersionCode
         versionName "1.0"
 
     }
@@ -87,4 +87,44 @@ dependencies {
 
 def releaseTime() {
     return new Date().format("yyyyMMddHH", TimeZone.getTimeZone("UTC"))
+}
+
+assembleRelease {}.doLast {
+    updateVersionCode()
+}
+
+def getVersionCode() {
+    def versionFile = file('version.properties')
+
+    if (versionFile.exists()) {
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionFile))
+        def versionCode = versionProps['build.number'].toInteger()
+        println('Current version code is ' + versionCode.toString())
+        return versionCode
+    } else {
+        throw new GradleException("Could not find version.properties!")
+    }
+}
+
+def updateVersionCode() {
+    def runTasks = gradle.startParameter.taskNames
+
+    if (!('assemble' in runTasks || 'assembleRelease' in runTasks || 'aR' in runTasks)) {
+        return
+    }
+
+    def File versionFile = file('version.properties')
+
+    if (versionFile.exists()) {
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionFile))
+        def currentVersionCode = versionProps['build.number'].toInteger()
+        currentVersionCode++
+        versionProps['build.number'] = currentVersionCode.toString()
+        versionProps.store(versionFile.newWriter(), null)
+        println('Updated version code to ' + currentVersionCode.toString())
+    } else {
+        throw new GradleException("Could not find version.properties!")
+    }
 }

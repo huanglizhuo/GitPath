@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -45,12 +46,25 @@ public class RetrofitUtils {
                 Log.i("Git", "Interceptor header = " + request.headers());
                 Log.i("Git", "Interceptor method = " + request.method());
                 Log.i("Git", "Interceptor urlString = " + request.url());
-
+                if (!Utils.isNetworkConnected()){
+                    request = request.newBuilder()
+                            .cacheControl(CacheControl.FORCE_CACHE)//if the network is not connect just use cache
+                            .build();
+                }
+                Response response = chain.proceed(request);
                 if (Utils.isNetworkConnected()){
-                    request = request.newBuilder().header("Cache-Control", "public, max-age=" + 1).build();
+                    int maxAge = 60 * 60;
+                    response.newBuilder()
+                            .removeHeader("Pragma")
+                            .header("Cache-Control", "public, max-age=" + maxAge)
+                            .build();
                 }else {
                     Toast.makeText(GitPathApplication.getContext(), "NetWork not available the content is cache", Toast.LENGTH_SHORT).show();
-                    request = request.newBuilder().header("Cache-Control", "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7).build();
+                    int maxStale = 60 * 60 * 24 * 7; // tolerate 4-weeks stale
+                    response.newBuilder()
+                            .removeHeader("Pragma")
+                            .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
+                            .build();
                 }
                 return chain.proceed(request);
             }

@@ -15,7 +15,7 @@
     <ImageView
         android:id="@+id/octocat"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/input_place"
         android:src="@drawable/octorcat"/>

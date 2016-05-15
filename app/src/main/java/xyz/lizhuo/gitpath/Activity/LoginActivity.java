@@ -36,7 +36,7 @@ import retrofit2.Response;
 import xyz.lizhuo.gitpath.GithubModel.GitHub;
 import xyz.lizhuo.gitpath.GithubModel.Token;
 import xyz.lizhuo.gitpath.R;
-import xyz.lizhuo.gitpath.Services.GithubServices;
+import xyz.lizhuo.gitpath.HttpMethods.GithubServices;
 import xyz.lizhuo.gitpath.Utils.Constant;
 import xyz.lizhuo.gitpath.Utils.RetrofitUtils;
 
@@ -124,6 +124,7 @@ public class LoginActivity extends AppCompatActivity {
         final Animator fade = AnimatorInflater.loadAnimator(this, R.animator.fade_out);
         fade.setTarget(mInputPlace);
         fade.start();
+        loginBtn.setVisibility(View.GONE);
         // TODO: 16/5/12 add loginbtn fade animation  add activity jum animation
 
         final Animator succes = AnimatorInflater.loadAnimator(this, R.animator.zoom_out_fade);

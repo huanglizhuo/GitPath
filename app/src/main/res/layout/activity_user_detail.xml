@@ -23,6 +23,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:id="@+id/user_followers_ll"
             android:layout_weight="1.0"
             android:orientation="vertical">
 
@@ -48,6 +49,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:id="@+id/user_following_ll"
             android:layout_weight="1.0"
             android:orientation="vertical">
 
@@ -110,6 +112,7 @@
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="0dp"
+            android:id="@+id/user_repos_count_ll"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:orientation="vertical">
@@ -130,7 +133,7 @@
             android:background="#dddddd" />
 
         <LinearLayout
-
+            android:id="@+id/user_started_count_ll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"

@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 public abstract class BaseAdapter extends RecyclerView.Adapter<BaseHolder> {
 
     // TODO: 16/5/13 optimise this using https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    // http://www.jianshu.com/p/411ab861034f
     // TODO: 16/4/11 add Header and Footer
     private static final int IS_NORMAL = 1;
     private static final int IS_HEADER = 2;

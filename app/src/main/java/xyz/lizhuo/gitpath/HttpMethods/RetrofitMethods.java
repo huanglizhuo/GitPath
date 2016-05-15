@@ -19,7 +19,6 @@ import xyz.lizhuo.gitpath.GithubModel.Notification;
 import xyz.lizhuo.gitpath.GithubModel.Repo;
 import xyz.lizhuo.gitpath.GithubModel.RepoContent;
 import xyz.lizhuo.gitpath.GithubModel.User;
-import xyz.lizhuo.gitpath.Services.GithubServices;
 import xyz.lizhuo.gitpath.Utils.RetrofitUtils;
 import xyz.lizhuo.gitpath.Utils.Utils;
 

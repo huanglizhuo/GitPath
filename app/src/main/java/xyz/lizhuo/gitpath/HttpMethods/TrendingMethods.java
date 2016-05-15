@@ -10,7 +10,6 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import xyz.lizhuo.gitpath.GithubModel.Repo;
-import xyz.lizhuo.gitpath.Services.TrendingServices;
 
 /**
  * Created by lizhuo on 16/4/9.

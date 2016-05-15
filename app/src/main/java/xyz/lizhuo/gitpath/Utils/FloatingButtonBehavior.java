@@ -1,4 +1,4 @@
-package xyz.lizhuo.gitpath.Activity;
+package xyz.lizhuo.gitpath.Utils;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;

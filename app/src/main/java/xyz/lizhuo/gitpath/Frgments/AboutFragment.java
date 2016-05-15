@@ -3,10 +3,10 @@ package xyz.lizhuo.gitpath.Frgments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,6 +24,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
+import xyz.lizhuo.gitpath.Activity.OneFragmentActivity;
+import xyz.lizhuo.gitpath.Activity.UserDetailActivity;
 import xyz.lizhuo.gitpath.Adapter.NotificationAdapter;
 import xyz.lizhuo.gitpath.GithubModel.GitHub;
 import xyz.lizhuo.gitpath.GithubModel.Notification;
@@ -32,8 +34,6 @@ import xyz.lizhuo.gitpath.GithubModel.User;
 import xyz.lizhuo.gitpath.HttpMethods.RetrofitMethods;
 import xyz.lizhuo.gitpath.R;
 import xyz.lizhuo.gitpath.Utils.GlideManager;
-import xyz.lizhuo.gitpath.Activity.OneFragmentActivity;
-import xyz.lizhuo.gitpath.Activity.UserDetailActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,8 +79,7 @@ public class AboutFragment extends Fragment {
     AppCompatSpinner mLanaguageSpinner;
     @Bind(R.id.language_lin)
     LinearLayout mLanguageLin;
-    @Bind(R.id.app_author_detail)
-    CardView mAppAuthorDetail;
+
 
 
     private String username;
@@ -214,22 +213,22 @@ public class AboutFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.user_followers, R.id.user_following, R.id.user_repos_count})
+    @OnClick({R.id.user_followers_ll, R.id.user_following_ll, R.id.user_repos_count_ll,R.id.give_comment_tv})
     public void onClick(View view) {
         // TODO: 16/5/14 maybe use implicit intent is better
         Intent intent = new Intent(context, OneFragmentActivity.class);
         intent.putExtra("userLogin", username);
         intent.putExtra("avatar_url", avatar_url);
         switch (view.getId()) {
-            case R.id.user_followers:
+            case R.id.user_followers_ll:
                 intent.putExtra("type", User.FOLLOWER);
                 context.startActivity(intent);
                 break;
-            case R.id.user_following:
+            case R.id.user_following_ll:
                 intent.putExtra("type", User.FOLLOWING);
                 context.startActivity(intent);
                 break;
-            case R.id.user_repos_count:
+            case R.id.user_repos_count_ll:
                 intent.putExtra("type", Repo.OWNREPO);
                 context.startActivity(intent);
                 break;
@@ -239,6 +238,14 @@ public class AboutFragment extends Fragment {
                 detailIntent.putExtra("userlogin", username);
                 detailIntent.putExtra("avatar_url", avatar_url);
                 context.startActivity(detailIntent);
+                break;
+            case R.id.give_comment_tv:
+                Intent feedbackIntent = new Intent();
+                feedbackIntent.setAction("android.intent.action.VIEW");
+                Uri content_url = Uri.parse("https://github.com/huanglizhuo/GitPath/issues/new");
+                feedbackIntent.setData(content_url);
+                context.startActivity(feedbackIntent);
+
                 break;
             default:
                 break;

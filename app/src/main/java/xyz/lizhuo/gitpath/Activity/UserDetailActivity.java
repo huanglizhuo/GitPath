@@ -136,22 +136,22 @@ public class UserDetailActivity extends BaseActivity {
         mStartedCount.setText(user.getPublic_gists() + "");
     }
 
-    @OnClick({R.id.user_followers, R.id.user_following, R.id.user_repos_count})
+    @OnClick({R.id.user_followers_ll, R.id.user_following_ll, R.id.user_repos_count_ll})
     public void onClick(View view) {
         Intent intent = new Intent(UserDetailActivity.this, OneFragmentActivity.class);
         intent.putExtra("userLogin", userLogin);
         intent.putExtra("avatar_url", avatar_url);
         switch (view.getId()) {
-            case R.id.user_followers:
+            case R.id.user_followers_ll:
                 intent.putExtra("type", User.FOLLOWER);
                 break;
-            case R.id.user_following:
+            case R.id.user_following_ll:
                 intent.putExtra("type", User.FOLLOWING);
                 break;
-            case R.id.user_repos_count:
+            case R.id.user_repos_count_ll:
                 intent.putExtra("type", Repo.OWNREPO);
                 break;
-            case R.id.user_started_count:
+            case R.id.user_started_count_ll:
                 intent.putExtra("type", Repo.STARTEDREPO);
                 break;
         }

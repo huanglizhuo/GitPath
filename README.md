@@ -1,17 +1,9 @@
 # GitPath
 [![Build Status](https://travis-ci.org/huanglizhuo/GitPath.svg?branch=master)](https://travis-ci.org/huanglizhuo/GitPath)
 
-一个 Github 客户端
-
 ![icon](./app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
 
-图标太丑了 ，哪位朋友可以贡献枚图标
-
-还有很多地方在一步一步优化 :(
-
-以下是为装逼
-
-An unofficial Github client 
+下载地址 [Google Play Store](https://play.google.com/store/apps/details?id=xyz.lizhuo.gitpath)  [豌豆荚应用商店](http://www.wandoujia.com/apps/xyz.lizhuo.gitpath) 
 
 ![screenshoot1](./screenshot/screen1.gif)
 ![screenshoot2](./screenshot/screen2.gif)
